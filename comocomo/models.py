@@ -113,6 +113,7 @@ class DaySlot(models.Model):
     class Meta:
         verbose_name = _(u'comida registrada')
         verbose_name_plural = _(u'comidas registradas')
+        unique_together = ('user', 'date', 'slot_name')
 
     def slot_name_printable(self):
         for name, text in self.SLOT_CHOICES:
@@ -126,4 +127,52 @@ class DaySlot(models.Model):
             self.date.strftime('%d/%m/%Y'),
             self.slot_name_printable(),
         )
+
+
+class EatingProfile(models.Model):
+
+    name = models.CharField(
+                blank=False, null=False, max_length=255,
+                verbose_name=_(u'nombre'))
+
+    description = models.TextField(
+                blank=True, null=False,
+                verbose_name=_(u'descripción'))
+
+    class Meta:
+        verbose_name = _(u'perfil de alimentación')
+        verbose_name_plural = _(u'perfiles de alimentación')
+
+    def __unicode__(self):
+        return self.name
+
+
+class EatingProfileItem(models.Model):
+
+    profile = models.ForeignKey('EatingProfile',
+                blank=False, null=False,
+                related_name='items',
+                verbose_name=_(u'perfil'))
+
+    date = models.DateField(
+                blank=False, null=False,
+                verbose_name=_(u'fecha'))
+
+    slot_name = models.CharField(
+                blank=False, null=False, max_length=100,
+                choices=DaySlot.SLOT_CHOICES,
+                verbose_name=_(u'período'))
+
+    eaten = models.ManyToManyField('FoodType',
+                blank=False,
+                verbose_name=_(u'comidas'),
+                help_text=_(u'Qué tipos de comida has comido en este período'))
+
+    class Meta:
+        verbose_name = _(u'ítem de perfil')
+        verbose_name_plural = _(u'ítems de perfil')
+        unique_together = ('profile', 'date', 'slot_name')
+
+    def __unicode__(self):
+        return self.name
 

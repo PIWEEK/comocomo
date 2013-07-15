@@ -24,3 +24,16 @@ class DaySlotAdmin(admin.ModelAdmin):
     filter_horizontal = ('eaten',)
 
 admin.site.register(DaySlot, DaySlotAdmin)
+
+
+class EatingProfileItemAdmin(admin.TabularInline):
+    model = EatingProfileItem
+    filter_horizontal = ('eaten',)
+
+
+class EatingProfileAdmin(admin.ModelAdmin):
+    inlines = [
+        EatingProfileItemAdmin,
+    ]
+
+admin.site.register(EatingProfile, EatingProfileAdmin)
