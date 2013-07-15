@@ -1,4 +1,10 @@
 *.log
 *.pot
 *.pyc
-local_settings.py
+*.swp
+*~
+.~lock.*
+tags
+tags
+*.db
+
