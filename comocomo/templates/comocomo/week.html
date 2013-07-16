@@ -1,14 +1,21 @@
 {% extends "base.html" %}
 {% load i18n staticfiles %}
+{% load url from future %}
 
-{% block title %}Comocomo - 15-21 julio 2013{% endblock %}
+{% block title %}Comocomo - Ver semana{% endblock %}
 
 {% block body %}
     <div data-role="page" data-theme="b">
         <div data-role="header">
-            <a href="#" data-role="button" data-icon="arrow-l" data-inline="true" data-iconpos="notext"/>anterior</a>
-            <h1>15-21 julio 2013</h1>
-            <a href="#" data-role="button" data-icon="arrow-r" data-inline="true" data-iconpos="notext"/>siguiente</a>
+            {% with calendar.minus_one_week as prev %}
+            <a href="{% url 'week' year=prev.year month=prev.month day=prev.day %}"
+                data-role="button" data-icon="arrow-l" data-inline="true" data-iconpos="notext"/>anterior</a>
+            {% endwith %}
+            <h1>{{ calendar.start_of_week|date:"j"}}-{{ calendar.end_of_week|date:"j b Y" }}</h1>
+            {% with calendar.plus_one_week as next %}
+            <a href="{% url 'week' year=next.year month=next.month day=next.day %}"
+                data-role="button" data-icon="arrow-r" data-inline="true" data-iconpos="notext"/>siguiente</a>
+            {% endwith %}
 	</div>
         <div data-role="content" style="background: #f3f3f3;">
             <div data-role="collapsible-set">
