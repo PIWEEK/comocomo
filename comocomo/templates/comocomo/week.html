@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+
+{% block title %}Comocomo - 15-21 julio 2013{% endblock %}
+
+{% block body %}
+    <div data-role="page" data-theme="b">
+        <div data-role="header">
+            <a href="#" data-role="button" data-icon="arrow-l" data-inline="true" data-iconpos="notext"/>anterior</a>
+            <h1>15-21 julio 2013</h1>
+            <a href="#" data-role="button" data-icon="arrow-r" data-inline="true" data-iconpos="notext"/>siguiente</a>
+	</div>
+        <div data-role="content" style="background: #f3f3f3;">
+            <div data-role="collapsible-set">
+                <div data-role="collapsible" data-content-theme="c">
+                    <h2>Lunes 15 de julio</h2>
+                    <ul data-role="listview">
+                        <li data-icon="false"><a href="#">Desayuno</a></li>
+                        <li data-icon="false"><a href="#">Media mañana</a></li>
+                        <li data-icon="false"><a href="#">Comida</a></li>
+                        <li data-icon="false"><a href="#">Merienda</a></li>
+                        <li data-icon="false"><a href="#">Cena</a></li>
+                    </ul>
+                </div>
+                <div data-role="collapsible" data-collapsed="false" data-content-theme="c">
+                    <h2>Martes 16 de julio</h2>
+                    <ul data-role="listview">
+                        <li data-icon="false">
+                            <a href="#">
+                                <h3>Desayuno</h3>
+                            </a>
+                        </li>
+                        <li data-icon="false">
+                            <a href="#">
+                                <h3>Media mañana</h3>
+                                <p class="ui-li-aside">
+                                    <img src="{% static 'img/icons/milk.png' %}"/>
+                                </p>
+                            </a>
+                        </li>
+                        <li data-icon="false">
+                            <a href="#">
+                                <h3>Comida</h3>
+                                <p class="ui-li-aside">
+                                    <img src="{% static 'img/icons/salad.png' %}"/>
+                                    <img src="{% static 'img/icons/turkey.png' %}"/>
+                                    <img src="{% static 'img/icons/apple.png' %}"/>
+                                    <img src="{% static 'img/icons/cupcake.png' %}"/>
+                                </p>
+                            </a>
+                        </li>
+                        <li data-icon="false">
+                            <a href="#">
+                                <h3>Merienda</h3>
+                                <p class="ui-li-aside">
+                                    <img src="{% static 'img/icons/eggs.png' %}"/>
+                                    <img src="{% static 'img/icons/bean.png' %}"/>
+                                    <img src="{% static 'img/icons/bottle.png' %}"/>
+                                </p>
+                            </a>
+                        </li>
+                        <li data-icon="false">
+                            <a href="#">
+                                <h3>Cena</h3>
+                                <p class="ui-li-aside">
+                                    <img src="{% static 'img/icons/sardines.png' %}"/>
+                                    <img src="{% static 'img/icons/wheat.png' %}"/>
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div data-role="footer">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="{% url 'week' %}" data-icon="home" data-theme="e">Semana</a></li>
+                    <li><a href="#" data-icon="grid" data-theme="e">Calendario</a></li>
+                    <li><a href="#" data-icon="star" data-theme="e">Resultados</a></li>
+                </ul>
+            </div>
+	</div>
+    </div>
+{% endblock %}
+
