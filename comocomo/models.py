@@ -40,6 +40,7 @@ class FoodType(models.Model):
 
     kind = models.ForeignKey('FoodKind',
                 blank=False, null=False,
+                related_name='food_types',
                 verbose_name=_(u'clase'))
 
     name = models.CharField(
@@ -86,7 +87,7 @@ class FoodType(models.Model):
         ordering = ('kind', 'name')
 
     def __unicode__(self):
-        return self.name
+        return u'{} {}'.format(self.kind.name, self.name)
 
 
 class SlotType:

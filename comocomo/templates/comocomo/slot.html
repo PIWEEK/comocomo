@@ -8,12 +8,13 @@
     <div data-role="page" data-theme="b">
         <div data-role="header">
             <a href="{% url 'week' year=current_date.year month=current_date.month day=current_date.day %}"
-                data-role="button" data-icon="back" data-inline="true"/>volver</a>
-            <h1>¿Qué has comido el {{ current_date|date:"l j \d\e F" }} - {{ day_slot.slot_name }}?</h1>
+                data-role="button" data-icon="back" data-inline="true" data-iconpos="notext"/>volver</a>
+            <h1>¿Qué has comido?</h1>
             <a href="{% url 'week' year=current_date.year month=current_date.month day=current_date.day %}"
                 data-role="button" data-icon="false" data-inline="true" data-theme="e"/>guardar</a>
 	</div>
         <div data-role="content" style="background: #f3f3f3;">
+            <p><strong>¿Qué has comido el {{ current_date|date:"l j \d\e F" }} - {{ day_slot.slot_name }}?</strong></p>
             <div class="ui-grid-c">
                 {% for kind in all_kinds %}
                     <div class="{% cycle 'ui-block-a' 'ui-block-b' 'ui-block-c' 'ui-block-d' %}">
@@ -22,6 +23,49 @@
                         </a>
                     </div>
                 {% endfor %}
+            </div>
+            <p><strong>Comidas elegidas:</strong></p>
+            <ul id="id_selected_types" data-role="listview">
+                <li data-icon="false" data-theme="c">
+                <p>
+                    <img src="{{ all_kinds.3.icon_path }}">
+                    <img src="{{ all_kinds.2.icon_path }}">
+                    <img src="{{ all_kinds.3.icon_path }}">
+                </p>
+                </li>
+            </ul>
+            <p><strong>Concreta un poco más:</strong></p>
+            <div data-role="collapsible-set">
+                {% with all_kinds.3 as kind %}
+                    <div data-role="collapsible" data-content-theme="c" data-collapsed="false">
+                        <h2><img src="{{ kind.icon_path }}"/> {{ kind.name }}</h2>
+                        <ul data-role="listview">
+                            {% for type in kind.food_types.all %}
+                                <li data-icon="false">{{ type.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endwith %}
+                {% with all_kinds.2 as kind %}
+                    <div data-role="collapsible" data-content-theme="c" data-collapsed="false">
+                        <h2><img src="{{ kind.icon_path }}"/> {{ kind.name }}</h2>
+                        <ul data-role="listview">
+                            {% for type in kind.food_types.all %}
+                                <li data-icon="false">{{ type.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endwith %}
+                {% with all_kinds.3 as kind %}
+                    <div data-role="collapsible" data-content-theme="c" data-collapsed="false">
+                        <h2><img src="{{ kind.icon_path }}"/> {{ kind.name }}</h2>
+                        <ul data-role="listview">
+                            {% for type in kind.food_types.all %}
+                                <li data-icon="false">{{ type.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endwith %}
             </div>
         </div>
     </div>

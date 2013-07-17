@@ -12,7 +12,7 @@ admin.site.register(FoodKind, FoodKindAdmin)
 
 
 class FoodTypeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'kind',)
+    list_display = ('__unicode__', 'kind',)
 
 admin.site.register(FoodType, FoodTypeAdmin)
 
