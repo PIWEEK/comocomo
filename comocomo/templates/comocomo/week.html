@@ -17,7 +17,7 @@
                 data-role="button" data-icon="arrow-r" data-inline="true" data-iconpos="notext"/>siguiente</a>
             {% endwith %}
 	</div>
-        <div data-role="content" style="background: #f3f3f3;">
+        <div data-role="content">
             <div data-role="collapsible-set">
                 {% for day, day_slots in week %}
                     <div data-role="collapsible" data-content-theme="c"{% if day == calendar.today %} data-collapsed="false"{% endif %}>

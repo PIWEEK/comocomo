@@ -9,11 +9,11 @@
         <div data-role="header">
             <a href="{% url 'week' year=current_date.year month=current_date.month day=current_date.day %}"
                 data-role="button" data-icon="back" data-inline="true" data-iconpos="notext"/>volver</a>
-            <h1>¿Qué has comido?</h1>
+            <h1>¿Qué comes?</h1>
             <a href="{% url 'week' year=current_date.year month=current_date.month day=current_date.day %}"
                 data-role="button" data-icon="false" data-inline="true" data-theme="e"/>guardar</a>
 	</div>
-        <div data-role="content" style="background: #f3f3f3;">
+        <div data-role="content">
             <p><strong>¿Qué has comido el {{ current_date|date:"l j \d\e F" }} - {{ day_slot.slot_name }}?</strong></p>
             <div class="ui-grid-c">
                 {% for kind in all_kinds %}
