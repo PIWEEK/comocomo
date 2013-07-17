@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% load url from future %}
+
+{% block title %}Comocomo - Qué has comido{% endblock %}
+
+{% block body %}
+    <div data-role="page" data-theme="b">
+        <div data-role="header">
+            <a href="{% url 'week' year=current_date.year month=current_date.month day=current_date.day %}"
+                data-role="button" data-icon="back" data-inline="true"/>volver</a>
+            <h1>¿Qué has comido el {{ current_date|date:"l j \d\e F" }} - {{ day_slot.slot_name }}?</h1>
+            <a href="{% url 'week' year=current_date.year month=current_date.month day=current_date.day %}"
+                data-role="button" data-icon="false" data-inline="true" data-theme="e"/>guardar</a>
+	</div>
+        <div data-role="content" style="background: #f3f3f3;">
+            <div class="ui-grid-c">
+                {% for kind in all_kinds %}
+                    <div class="{% cycle 'ui-block-a' 'ui-block-b' 'ui-block-c' 'ui-block-d' %}">
+                        <a href="#" data-role="button" data-icon="false">
+                            <img src="{{ kind.icon_path }}"/>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

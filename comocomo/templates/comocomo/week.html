@@ -25,7 +25,7 @@
                         <ul data-role="listview">
                             {% for slot in day_slots %}
                                 <li data-icon="false">
-                                    <a href="#">
+                                    <a href="{% url 'slot' year=day.year month=day.month day=day.day slot=slot.slot %}">
                                         <h3>{{ slot.slot_name }}</h3>
                                         {% if slot.id %}
                                             {% with slot.eaten.all as eaten %}
