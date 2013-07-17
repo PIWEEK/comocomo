@@ -19,64 +19,31 @@
 	</div>
         <div data-role="content" style="background: #f3f3f3;">
             <div data-role="collapsible-set">
-                <div data-role="collapsible" data-content-theme="c">
-                    <h2>Lunes 15 de julio</h2>
-                    <ul data-role="listview">
-                        <li data-icon="false"><a href="#">Desayuno</a></li>
-                        <li data-icon="false"><a href="#">Media mañana</a></li>
-                        <li data-icon="false"><a href="#">Comida</a></li>
-                        <li data-icon="false"><a href="#">Merienda</a></li>
-                        <li data-icon="false"><a href="#">Cena</a></li>
-                    </ul>
-                </div>
-                <div data-role="collapsible" data-collapsed="false" data-content-theme="c">
-                    <h2>Martes 16 de julio</h2>
-                    <ul data-role="listview">
-                        <li data-icon="false">
-                            <a href="#">
-                                <h3>Desayuno</h3>
-                            </a>
-                        </li>
-                        <li data-icon="false">
-                            <a href="#">
-                                <h3>Media mañana</h3>
-                                <p class="ui-li-aside">
-                                    <img src="{% static 'img/icons/milk.png' %}"/>
-                                </p>
-                            </a>
-                        </li>
-                        <li data-icon="false">
-                            <a href="#">
-                                <h3>Comida</h3>
-                                <p class="ui-li-aside">
-                                    <img src="{% static 'img/icons/salad.png' %}"/>
-                                    <img src="{% static 'img/icons/turkey.png' %}"/>
-                                    <img src="{% static 'img/icons/apple.png' %}"/>
-                                    <img src="{% static 'img/icons/cupcake.png' %}"/>
-                                </p>
-                            </a>
-                        </li>
-                        <li data-icon="false">
-                            <a href="#">
-                                <h3>Merienda</h3>
-                                <p class="ui-li-aside">
-                                    <img src="{% static 'img/icons/eggs.png' %}"/>
-                                    <img src="{% static 'img/icons/bean.png' %}"/>
-                                    <img src="{% static 'img/icons/bottle.png' %}"/>
-                                </p>
-                            </a>
-                        </li>
-                        <li data-icon="false">
-                            <a href="#">
-                                <h3>Cena</h3>
-                                <p class="ui-li-aside">
-                                    <img src="{% static 'img/icons/sardines.png' %}"/>
-                                    <img src="{% static 'img/icons/wheat.png' %}"/>
-                                </p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                {% for day, day_slots in week %}
+                    <div data-role="collapsible" data-content-theme="c"{% if day == calendar.today %} data-collapsed="false"{% endif %}>
+                        <h2>{{ day|date:"l j \d\e F" }}</h2>
+                        <ul data-role="listview">
+                            {% for slot in day_slots %}
+                                <li data-icon="false">
+                                    <a href="#">
+                                        <h3>{{ slot.slot_name }}</h3>
+                                        {% if slot.id %}
+                                            {% with slot.eaten.all as eaten %}
+                                                {% if eaten %}
+                                                <p class="ui-li-aside">
+                                                    {% for eaten_type in eaten %}
+                                                        <img src="{{ eaten_type.kind.icon_path }}"/>
+                                                    {% endfor %}
+                                                </p>
+                                                {% endif %}
+                                            {% endwith %}
+                                        {% endif %}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
             </div>
         </div>
         <div data-role="footer">

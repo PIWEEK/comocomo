@@ -11,8 +11,17 @@ class Calendar(object):
             self._current_date = date(year=year, month=month, day=day)
 
     @property
+    def today(self):
+        return date.today()
+
+    @property
     def current_date(self):
         return self._current_date
+
+    @property
+    def current_week(self):
+        start_day = self.start_of_week
+        return [start_day + timedelta(days=i) for i in range(0, 7)]
 
     @property
     def start_of_week(self):

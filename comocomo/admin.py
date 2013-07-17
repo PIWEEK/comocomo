@@ -19,8 +19,8 @@ admin.site.register(FoodType, FoodTypeAdmin)
 
 class DaySlotAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'
-    list_display = ('user', 'date', 'slot_name',)
-    list_filter = ('slot_name',)
+    list_display = ('user', 'date', 'slot',)
+    list_filter = ('slot',)
     filter_horizontal = ('eaten',)
 
 admin.site.register(DaySlot, DaySlotAdmin)

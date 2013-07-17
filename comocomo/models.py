@@ -2,8 +2,13 @@
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.staticfiles.storage import staticfiles_storage
+
+import os.path
 
 class FoodKind(models.Model):
+
+    ICONS_PATH = 'img/icons'
 
     name = models.CharField(
                 blank=False, null=False, max_length=255,
@@ -13,12 +18,22 @@ class FoodKind(models.Model):
                 blank=True, null=False,
                 verbose_name=_(u'descripción'))
 
+    icon_name = models.CharField(
+                blank=False, null=False, max_length=100,
+                verbose_name=_(u'nombre del icono'),
+                help_text=_(u'Nombre de un fichero .png, .gif o .jpg de 32px de alto, situado en el directorio de iconos'))
+
     class Meta:
         verbose_name = _(u'clase de comida')
         verbose_name_plural = _(u'clases de comida')
+        ordering = ('name',)
 
     def __unicode__(self):
         return self.name
+
+    @property
+    def icon_path(self):
+        return staticfiles_storage.url(os.path.join(self.ICONS_PATH, self.icon_name))
 
 
 class FoodType(models.Model):
@@ -52,7 +67,7 @@ class FoodType(models.Model):
 
     dev_price = models.DecimalField(
                 blank=False, null=False, max_digits=5, decimal_places=2,
-                verbose_name=_(u'precio medio'),
+                verbose_name=_(u'desviación del precio medio'),
                 help_text=_(u'Valor típico de desviación de precio arriba y abajo'))
 
     eco_level = models.PositiveSmallIntegerField(
@@ -68,27 +83,34 @@ class FoodType(models.Model):
     class Meta:
         verbose_name = _(u'tipo de comida')
         verbose_name_plural = _(u'tipos de comida')
+        ordering = ('kind', 'name')
 
     def __unicode__(self):
         return self.name
 
 
-class SlotName:
-    BREAKFAST = 'breakfast'
-    MID_MORNING = 'mid_morning'
-    LUNCH = 'lunch'
-    MID_EVENING = 'mid_evening'
-    DINNER = 'dinner'
+class SlotType:
+    BREAKFAST = 1
+    MID_MORNING = 2
+    LUNCH = 3
+    MID_EVENING = 4
+    DINNER = 5
+
+    @classmethod
+    def values(cls):
+        values_list = [getattr(cls, attr) for attr in dir(cls) if attr[0].isupper()]
+        values_list.sort()
+        return values_list
 
 
 class DaySlot(models.Model):
 
     SLOT_CHOICES = (
-        (SlotName.BREAKFAST, _(u'Desayuno')),
-        (SlotName.MID_MORNING, _(u'Media mañana')),
-        (SlotName.LUNCH, _(u'Comida')),
-        (SlotName.MID_EVENING, _(u'Merienda')),
-        (SlotName.DINNER, _(u'Cena')),
+        (SlotType.BREAKFAST, _(u'Desayuno')),
+        (SlotType.MID_MORNING, _(u'Media mañana')),
+        (SlotType.LUNCH, _(u'Comida')),
+        (SlotType.MID_EVENING, _(u'Merienda')),
+        (SlotType.DINNER, _(u'Cena')),
     )
 
     user = models.ForeignKey('auth.User',
@@ -99,8 +121,8 @@ class DaySlot(models.Model):
                 blank=False, null=False,
                 verbose_name=_(u'fecha'))
 
-    slot_name = models.CharField(
-                blank=False, null=False, max_length=100,
+    slot = models.PositiveSmallIntegerField(
+                blank=False, null=False,
                 choices=SLOT_CHOICES,
                 verbose_name=_(u'período'))
 
@@ -113,19 +135,20 @@ class DaySlot(models.Model):
     class Meta:
         verbose_name = _(u'comida registrada')
         verbose_name_plural = _(u'comidas registradas')
-        unique_together = ('user', 'date', 'slot_name')
+        unique_together = ('user', 'date', 'slot')
+        ordering = ('user', 'date', 'slot')
 
-    def slot_name_printable(self):
-        for name, text in self.SLOT_CHOICES:
-            if self.slot_name == name:
-                return unicode(text)
+    def slot_name(self):
+        for id, name in self.SLOT_CHOICES:
+            if self.slot == id:
+                return unicode(name)
         return unicode(_(u'período no definido'))
 
     def __unicode__(self):
         return u'({0}) {1} - {2}'.format(
             self.user.username,
             self.date.strftime('%d/%m/%Y'),
-            self.slot_name_printable(),
+            self.slot_name(),
         )
 
 
@@ -142,6 +165,7 @@ class EatingProfile(models.Model):
     class Meta:
         verbose_name = _(u'perfil de alimentación')
         verbose_name_plural = _(u'perfiles de alimentación')
+        ordering = ('name',)
 
     def __unicode__(self):
         return self.name
@@ -158,8 +182,8 @@ class EatingProfileItem(models.Model):
                 blank=False, null=False,
                 verbose_name=_(u'fecha'))
 
-    slot_name = models.CharField(
-                blank=False, null=False, max_length=100,
+    slot = models.PositiveSmallIntegerField(
+                blank=False, null=False,
                 choices=DaySlot.SLOT_CHOICES,
                 verbose_name=_(u'período'))
 
@@ -171,7 +195,8 @@ class EatingProfileItem(models.Model):
     class Meta:
         verbose_name = _(u'ítem de perfil')
         verbose_name_plural = _(u'ítems de perfil')
-        unique_together = ('profile', 'date', 'slot_name')
+        unique_together = ('profile', 'date', 'slot')
+        ordering = ('profile', 'date', 'slot')
 
     def __unicode__(self):
         return self.name

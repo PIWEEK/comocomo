@@ -1,0 +1,1622 @@
+[
+{
+    "pk": 1, 
+    "model": "comocomo.foodkind", 
+    "fields": {
+        "icon_name": "salad.png", 
+        "name": "Verduras u hortalizas", 
+        "description": ""
+    }
+},
+{
+    "pk": 2, 
+    "model": "comocomo.foodkind", 
+    "fields": {
+        "icon_name": "steak.png", 
+        "name": "Carnes o embutidos", 
+        "description": ""
+    }
+},
+{
+    "pk": 3, 
+    "model": "comocomo.foodkind", 
+    "fields": {
+        "icon_name": "apple.png", 
+        "name": "Frutas", 
+        "description": ""
+    }
+},
+{
+    "pk": 4, 
+    "model": "comocomo.foodkind", 
+    "fields": {
+        "icon_name": "milk.png", 
+        "name": "Leche o derivados", 
+        "description": ""
+    }
+},
+{
+    "pk": 5, 
+    "model": "comocomo.foodkind", 
+    "fields": {
+        "icon_name": "sardines.png", 
+        "name": "Pescados o marisco", 
+        "description": ""
+    }
+},
+{
+    "pk": 6, 
+    "model": "comocomo.foodkind", 
+    "fields": {
+        "icon_name": "eggs.png", 
+        "name": "Huevos", 
+        "description": ""
+    }
+},
+{
+    "pk": 7, 
+    "model": "comocomo.foodkind", 
+    "fields": {
+        "icon_name": "bean.png", 
+        "name": "Legumbres", 
+        "description": ""
+    }
+},
+{
+    "pk": 8, 
+    "model": "comocomo.foodkind", 
+    "fields": {
+        "icon_name": "wheat.png", 
+        "name": "Cereales, pasta o arroz", 
+        "description": ""
+    }
+},
+{
+    "pk": 9, 
+    "model": "comocomo.foodkind", 
+    "fields": {
+        "icon_name": "cupcake.png", 
+        "name": "Dulces, bollos o bebidas azucaradas", 
+        "description": ""
+    }
+},
+{
+    "pk": 10, 
+    "model": "comocomo.foodkind", 
+    "fields": {
+        "icon_name": "bottle.png", 
+        "name": "Bebidas alcohólicas", 
+        "description": ""
+    }
+},
+{
+    "pk": 1, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 1, 
+        "name": "Verduras del s\u00faper, ligeras", 
+        "max_week": 20, 
+        "dev_price": "1", 
+        "social_level": 1, 
+        "avg_price": "3", 
+        "min_week": 10, 
+        "description": ""
+    }
+},
+{
+    "pk": 2, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 1, 
+        "name": "Verduras del s\u00faper, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "4", 
+        "min_week": 5, 
+        "description": ""
+    }
+},
+{
+    "pk": 3, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 1, 
+        "name": "Verduras de restaurante bueno, ligeras", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 4, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 1, 
+        "name": "Verduras de restaurante bueno, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 5, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 1, 
+        "name": "Verduras de restaurante barato, ligeras", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 6, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 1, 
+        "name": "Verduras de restaurante barato, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 7, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 1, 
+        "name": "Verduras de producción local, ligeras", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 8, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 1, 
+        "name": "Verduras de producción local, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 9, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 1, 
+        "name": "Verduras ecológicas de tienda o restaurante, ligeras", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 10, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 1, 
+        "name": "Verduras ecológicas de tienda o restaurante, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 11, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 1, 
+        "name": "Verduras ecológicas directas, ligeras", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 12, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 1, 
+        "name": "Verduras ecológicas directas, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 13, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 2, 
+        "name": "Carnes o embutidos del s\u00faper, ligeras", 
+        "max_week": 20, 
+        "dev_price": "1", 
+        "social_level": 1, 
+        "avg_price": "3", 
+        "min_week": 10, 
+        "description": ""
+    }
+},
+{
+    "pk": 14, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 2, 
+        "name": "Carnes o embutidos del s\u00faper, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "4", 
+        "min_week": 5, 
+        "description": ""
+    }
+},
+{
+    "pk": 15, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 2, 
+        "name": "Carnes o embutidos de restaurante bueno, ligeras", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 16, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 2, 
+        "name": "Carnes o embutidos de restaurante bueno, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 17, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 2, 
+        "name": "Carnes o embutidos de restaurante barato, ligeras", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 18, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 2, 
+        "name": "Carnes o embutidos de restaurante barato, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 19, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 2, 
+        "name": "Carnes o embutidos de producción local, ligeras", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 20, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 2, 
+        "name": "Carnes o embutidos de producción local, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 21, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 2, 
+        "name": "Carnes o embutidos ecológicas de tienda o restaurante, ligeras", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 22, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 2, 
+        "name": "Carnes o embutidos ecológicas de tienda o restaurante, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 23, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 2, 
+        "name": "Carnes o embutidos ecológicas directas, ligeras", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 24, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 2, 
+        "name": "Carnes o embutidos ecológicas directas, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 25, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 3, 
+        "name": "Frutas del s\u00faper, frescas", 
+        "max_week": 20, 
+        "dev_price": "1", 
+        "social_level": 1, 
+        "avg_price": "3", 
+        "min_week": 10, 
+        "description": ""
+    }
+},
+{
+    "pk": 26, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 3, 
+        "name": "Frutas del s\u00faper, elaboradas", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "4", 
+        "min_week": 5, 
+        "description": ""
+    }
+},
+{
+    "pk": 27, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 3, 
+        "name": "Frutas de restaurante bueno, frescas", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 28, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 3, 
+        "name": "Frutas de restaurante bueno, elaboradas", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 29, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 3, 
+        "name": "Frutas de restaurante barato, frescas", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 30, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 3, 
+        "name": "Frutas de restaurante barato, elaboradas", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 31, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 3, 
+        "name": "Frutas de producción local, frescas", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 32, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 3, 
+        "name": "Frutas de producción local, elaboradas", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 33, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 3, 
+        "name": "Frutas ecológicas de tienda o restaurante, frescas", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 34, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 3, 
+        "name": "Frutas ecológicas de tienda o restaurante, elaboradas", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 35, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 3, 
+        "name": "Frutas ecológicas directas, frescas", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 36, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 3, 
+        "name": "Frutas ecológicas directas, elaboradas", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 37, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 4, 
+        "name": "Leche o derivados del s\u00faper, desnatada", 
+        "max_week": 20, 
+        "dev_price": "1", 
+        "social_level": 1, 
+        "avg_price": "3", 
+        "min_week": 10, 
+        "description": ""
+    }
+},
+{
+    "pk": 38, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 4, 
+        "name": "Leche o derivados del s\u00faper, entera", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "4", 
+        "min_week": 5, 
+        "description": ""
+    }
+},
+{
+    "pk": 39, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 4, 
+        "name": "Leche o derivados de restaurante bueno, desnatada", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 40, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 4, 
+        "name": "Leche o derivados de restaurante bueno, entera", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 41, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 4, 
+        "name": "Leche o derivados de restaurante barato, desnatada", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 42, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 4, 
+        "name": "Leche o derivados de restaurante barato, entera", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 43, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 4, 
+        "name": "Leche o derivados de producción local, desnatada", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 44, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 4, 
+        "name": "Leche o derivados de producción local, entera", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 45, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 4, 
+        "name": "Leche o derivados ecológicas de tienda o restaurante, desnatada", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 46, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 4, 
+        "name": "Leche o derivados ecológicas de tienda o restaurante, entera", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 47, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 4, 
+        "name": "Leche o derivados ecológicas directas, desnatada", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 48, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 4, 
+        "name": "Leche o derivados ecológicas directas, entera", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 49, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 5, 
+        "name": "Pescados o marisco del s\u00faper, ligeros", 
+        "max_week": 20, 
+        "dev_price": "1", 
+        "social_level": 1, 
+        "avg_price": "3", 
+        "min_week": 10, 
+        "description": ""
+    }
+},
+{
+    "pk": 50, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 5, 
+        "name": "Pescados o marisco del s\u00faper, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "4", 
+        "min_week": 5, 
+        "description": ""
+    }
+},
+{
+    "pk": 51, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 5, 
+        "name": "Pescados o marisco de restaurante bueno, ligeros", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 52, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 5, 
+        "name": "Pescados o marisco de restaurante bueno, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 53, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 5, 
+        "name": "Pescados o marisco de restaurante barato, ligeros", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 54, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 5, 
+        "name": "Pescados o marisco de restaurante barato, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 55, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 5, 
+        "name": "Pescados o marisco de producción local, ligeros", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 56, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 5, 
+        "name": "Pescados o marisco de producción local, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 57, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 5, 
+        "name": "Pescados o marisco ecológicas de tienda o restaurante, ligeros", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 58, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 5, 
+        "name": "Pescados o marisco ecológicas de tienda o restaurante, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 59, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 5, 
+        "name": "Pescados o marisco ecológicas directas, ligeros", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 60, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 5, 
+        "name": "Pescados o marisco ecológicas directas, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 61, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 6, 
+        "name": "Huevos del s\u00faper", 
+        "max_week": 20, 
+        "dev_price": "1", 
+        "social_level": 1, 
+        "avg_price": "3", 
+        "min_week": 10, 
+        "description": ""
+    }
+},
+{
+    "pk": 62, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 6, 
+        "name": "Huevos de restaurante bueno", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 63, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 6, 
+        "name": "Huevos de restaurante barato", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 64, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 6, 
+        "name": "Huevos de producción local", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 65, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 6, 
+        "name": "Huevos ecológicos de tienda o restaurante", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 66, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 6, 
+        "name": "Huevos ecológicos directos", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 67, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 7, 
+        "name": "Legumbres del s\u00faper, ligeras", 
+        "max_week": 20, 
+        "dev_price": "1", 
+        "social_level": 1, 
+        "avg_price": "3", 
+        "min_week": 10, 
+        "description": ""
+    }
+},
+{
+    "pk": 68, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 7, 
+        "name": "Legumbres del s\u00faper, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "4", 
+        "min_week": 5, 
+        "description": ""
+    }
+},
+{
+    "pk": 69, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 7, 
+        "name": "Legumbres de restaurante bueno, ligeras", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 70, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 7, 
+        "name": "Legumbres de restaurante bueno, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 71, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 7, 
+        "name": "Legumbres de restaurante barato, ligeras", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 72, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 7, 
+        "name": "Legumbres de restaurante barato, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 73, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 7, 
+        "name": "Legumbres de producción local, ligeras", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 74, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 7, 
+        "name": "Legumbres de producción local, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 75, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 7, 
+        "name": "Legumbres ecológicas de tienda o restaurante, ligeras", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 76, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 7, 
+        "name": "Legumbres ecológicas de tienda o restaurante, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 77, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 7, 
+        "name": "Legumbres ecológicas directas, ligeras", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 78, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 7, 
+        "name": "Legumbres ecológicas directas, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 79, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 8, 
+        "name": "Cereales, pasta o arroz del s\u00faper, ligeros", 
+        "max_week": 20, 
+        "dev_price": "1", 
+        "social_level": 1, 
+        "avg_price": "3", 
+        "min_week": 10, 
+        "description": ""
+    }
+},
+{
+    "pk": 80, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 8, 
+        "name": "Cereales, pasta o arroz del s\u00faper, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "4", 
+        "min_week": 5, 
+        "description": ""
+    }
+},
+{
+    "pk": 81, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 8, 
+        "name": "Cereales, pasta o arroz de restaurante bueno, ligeros", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 82, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 8, 
+        "name": "Cereales, pasta o arroz de restaurante bueno, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 83, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 8, 
+        "name": "Cereales, pasta o arroz de restaurante barato, ligeros", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 84, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 8, 
+        "name": "Cereales, pasta o arroz de restaurante barato, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 85, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 8, 
+        "name": "Cereales, pasta o arroz de producción local, ligeros", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 86, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 8, 
+        "name": "Cereales, pasta o arroz de producción local, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 87, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 8, 
+        "name": "Cereales, pasta o arroz ecológicas de tienda o restaurante, ligeros", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 88, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 8, 
+        "name": "Cereales, pasta o arroz ecológicas de tienda o restaurante, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 89, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 8, 
+        "name": "Cereales, pasta o arroz ecológicas directas, ligeros", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 90, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 8, 
+        "name": "Cereales, pasta o arroz ecológicas directas, contundentes", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 91, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 9, 
+        "name": "Dulces, bollos o bebidas azucaradas del s\u00faper", 
+        "max_week": 20, 
+        "dev_price": "1", 
+        "social_level": 1, 
+        "avg_price": "3", 
+        "min_week": 10, 
+        "description": ""
+    }
+},
+{
+    "pk": 92, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 9, 
+        "name": "Dulces, bollos o bebidas azucaradas de restaurante bueno", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 93, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 9, 
+        "name": "Dulces, bollos o bebidas azucaradas de restaurante barato", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 94, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 9, 
+        "name": "Dulces, bollos o bebidas azucaradas de producción local", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 95, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 9, 
+        "name": "Dulces, bollos o bebidas azucaradas ecológicas de tienda o restaurante", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 96, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 9, 
+        "name": "Dulces, bollos o bebidas azucaradas ecológicas directas", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 97, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 10, 
+        "name": "Bebidas alcohólicas del s\u00faper", 
+        "max_week": 20, 
+        "dev_price": "1", 
+        "social_level": 1, 
+        "avg_price": "3", 
+        "min_week": 10, 
+        "description": ""
+    }
+},
+{
+    "pk": 98, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 10, 
+        "name": "Bebidas alcohólicas de restaurante bueno", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 99, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 10, 
+        "name": "Bebidas alcohólicas de restaurante barato", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 100, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 10, 
+        "name": "Bebidas alcohólicas de producción local", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 101, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 10, 
+        "name": "Bebidas alcohólicas ecológicas de tienda o restaurante", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+},
+{
+    "pk": 102, 
+    "model": "comocomo.foodtype", 
+    "fields": {
+        "eco_level": 1, 
+        "kind": 10, 
+        "name": "Bebidas alcohólicas ecológicas directas", 
+        "max_week": 10, 
+        "dev_price": "2", 
+        "social_level": 1, 
+        "avg_price": "5", 
+        "min_week": 3, 
+        "description": ""
+    }
+}
+]
