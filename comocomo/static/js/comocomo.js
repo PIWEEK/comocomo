@@ -64,10 +64,9 @@
       return _ref4;
     }
 
-    SlotView.prototype.el = '#comocomo-slot-page';
-
     SlotView.prototype.events = {
-      'click .comocomo-kind-button': 'onClickKindButton'
+      'click .comocomo-kind-button': 'onClickKindButton',
+      'click .comocomo-save-button': 'onClickSaveButton'
     };
 
     SlotView.prototype.initialize = function() {
@@ -76,27 +75,47 @@
       this.current_month = this.$el.data('comocomo-month');
       this.current_day = this.$el.data('comocomo-day');
       this.current_slot = this.$el.data('comocomo-slot');
-      console.log(this.current_year, this.current_month, this.current_day, this.current_slot);
       this.foodKinds = new FoodKindCollection();
       this.foodTypes = new FoodTypeCollection();
-      $.ajax({
+      this.selectedFoodTypes = new FoodTypeCollection();
+      return $.ajax({
         url: '/food_kinds/',
         success: function(data, textStatus, jqXHR) {
-          return _this.foodKinds.reset(data);
-        }
-      });
-      return $.ajax({
-        url: '/food_types/',
-        success: function(data, textStatus, jqXHR) {
-          return _this.foodTypes.reset(data);
+          _this.foodKinds.reset(data);
+          return $.ajax({
+            url: '/food_types/',
+            success: function(data, textStatus, jqXHR) {
+              _this.foodTypes.reset(data);
+              return $.ajax({
+                url: "/slot_eaten/?year=" + _this.current_year + "&month=" + _this.current_month + "&day=" + _this.current_day + "&slot=" + _this.current_slot,
+                success: function(data, textStatus, jqXHR) {
+                  var kind, type, typeId, _i, _len, _results;
+                  _results = [];
+                  for (_i = 0, _len = data.length; _i < _len; _i++) {
+                    typeId = data[_i];
+                    type = _this.foodTypes.get(typeId);
+                    kind = _this.foodKinds.get(type.get('kind_id'));
+                    _results.push(_this.addFoodKind(kind, type));
+                  }
+                  return _results;
+                }
+              });
+            }
+          });
         }
       });
     };
 
-    SlotView.prototype.onClickKindButton = function(event) {
-      var chosen, chosen_id, kind, target, type_select;
-      target = $(event.currentTarget);
-      kind = this.foodKinds.get(target.data('comocomo-kind-id'));
+    SlotView.prototype.addFoodKind = function(kind, selectedType) {
+      var chosen, chosen_id, select_id, type_select, types,
+        _this = this;
+      if (selectedType === null) {
+        types = this.foodTypes.filter(function(item) {
+          return item.get('kind_id') === kind.get('id');
+        });
+        selectedType = types[0];
+      }
+      this.selectedFoodTypes.add(selectedType);
       chosen = new ChosenFoodKindView({
         'kind': kind
       });
@@ -104,11 +123,30 @@
       $(chosen_id).append(chosen.render().$el.html());
       type_select = new FoodTypeSelectView({
         'kind': kind,
+        'selectedType': selectedType,
         'foodTypes': this.foodTypes
       });
-      $('#comocomo-food-type-selects').append(type_select.render().$el.html());
-      $('#comocomo-food-type-selects div[data-role="fieldcontain"]').trigger('create');
-      return $('#comocomo-food-type-selects div[data-role="fieldcontain"]').fieldcontain('refresh');
+      select_id = "#comocomo-food-type-selects-" + this.current_year + "-" + this.current_month + "-" + this.current_day + "-" + this.current_slot;
+      $(select_id).append(type_select.render().$el.html());
+      $("" + select_id + " div[data-role='fieldcontain']").trigger('create');
+      return $("" + select_id + " div[data-role='fieldcontain']").fieldcontain('refresh');
+    };
+
+    SlotView.prototype.onClickKindButton = function(event) {
+      var kind, target;
+      target = $(event.currentTarget);
+      kind = this.foodKinds.get(target.data('comocomo-kind-id'));
+      return this.addFoodKind(kind, null);
+    };
+
+    SlotView.prototype.onClickSaveButton = function(event) {
+      var _this = this;
+      event.preventDefault;
+      return $.post("/slot_eaten/?year=" + this.current_year + "&month=" + this.current_month + "&day=" + this.current_day + "&slot=" + this.current_slot, JSON.stringify(this.selectedFoodTypes), function(data) {
+        if (data.success) {
+          return console.log("hola");
+        }
+      }, 'json');
     };
 
     return SlotView;
@@ -143,16 +181,17 @@
     }
 
     FoodTypeSelectView.prototype.render = function() {
-      var is_checked, kind, select_block, type, types, types_block, _i, _len,
+      var is_checked, kind, select_block, selectedType, type, types, types_block, _i, _len,
         _this = this;
       kind = this.options['kind'];
+      selectedType = this.options['selectedType'];
       types = this.options['foodTypes'].filter(function(item) {
         return item.get('kind_id') === kind.get('id');
       });
       types_block = "";
       for (_i = 0, _len = types.length; _i < _len; _i++) {
         type = types[_i];
-        is_checked = (type.get('id') === 93 ? 'checked="checked"' : '');
+        is_checked = (selectedType && (type.get('id') === selectedType.get('id')) ? 'checked="checked"' : '');
         types_block += "<input type=\"radio\" data-theme=\"c\" name=\"select-type-" + (kind.get('id')) + "\"\n       id=\"select-type-" + (kind.get('id')) + "-" + (type.get('id')) + "\"\n       value=\"" + (type.get('id')) + "\"" + is_checked + " />\n<label for=\"select-type-" + (kind.get('id')) + "-" + (type.get('id')) + "\">" + (type.get('name')) + "</label>";
       }
       select_block = "<div data-role=\"fieldcontain\">\n    <fieldset data-role=\"controlgroup\">\n        <legend><img src=\"" + (kind.get('icon_path')) + "\"/> " + (kind.get('name')) + "</legend>\n        " + types_block + "\n    </fieldset>\n</div>";
@@ -166,8 +205,11 @@
 
   $(document).bind('pageinit', function(event) {
     var slotView;
-    console.log(event.target);
-    return slotView = new SlotView();
+    if (event.target.id === 'comocomo-slot-page') {
+      return slotView = new SlotView({
+        'el': event.target
+      });
+    }
   });
 
 }).call(this);

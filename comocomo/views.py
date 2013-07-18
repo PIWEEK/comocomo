@@ -2,7 +2,8 @@
 
 from django.views.generic.base import View, TemplateView
 from django.utils.translation import ugettext as _
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.core.urlresolvers import reverse
 
 import datetime
 import json
@@ -99,3 +100,69 @@ class SlotView(TemplateView):
         context['all_kinds'] = FoodKind.objects.all()
         context['day_slot'] = self.day_slot
         return context
+
+
+class SlotEatenView(View):
+
+    def dispatch(self, request, *args, **kwargs):
+
+        year = request.GET.get('year', None)
+        month = request.GET.get('month', None)
+        day = request.GET.get('day', None)
+        slot = request.GET.get('slot', None)
+        try:
+            self.current_date = datetime.date(
+                year = int(year),
+                month = int(month),
+                day = int(day),
+            )
+        except (TypeError, ValueError):
+            raise ValueError(_(u'Fecha incorrecta: {}/{}/{}'.format(day, month, year)))
+
+        try:
+            self.slot_type = int(slot)
+            if not self.slot_type in SlotType.values():
+                raise ValueError()
+        except ValueError:
+            raise ValueError(_(u'Período incorrecto: {}'.format(slot)))
+
+        try:
+            self.day_slot = DaySlot.objects.get(user=request.user, date=self.current_date, slot=self.slot_type)
+        except DaySlot.DoesNotExist:
+            self.day_slot = None
+
+        return super(SlotEatenView, self).dispatch(request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        eaten = [food_type.id for food_type in self.day_slot.eaten.all()] if self.day_slot else []
+        return HttpResponse(json.dumps(eaten), content_type='application/json')
+
+    def post(self, request, *args, **kwargs):
+        food_types = []
+        for name, value in request.POST.items():
+            if name.startswith('select-type'):
+                try:
+                    food_type = FoodType.objects.get(id = value)
+                    food_types.append(food_type)
+                except FoodType.DoesNotExist:
+                    raise Http404(_(u'No se encuentra FoodType con id {}'.format(value)))
+
+        if not self.day_slot:
+            self.day_slot = DaySlot.objects.create(
+                user=request.user,
+                date=self.current_date,
+                slot=self.slot_type,
+            )
+
+        self.day_slot.eaten.clear()
+        for food_type in food_types:
+            self.day_slot.eaten.add(food_type)
+
+        return HttpResponseRedirect(
+            reverse('week') + "?year={}&month={}&day={}".format(
+                self.current_date.year,
+                self.current_date.month,
+                self.current_date.day,
+            )
+        )
+

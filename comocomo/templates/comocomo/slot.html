@@ -12,8 +12,6 @@
             <a href="{% url 'week' %}?year={{ current_date.year }}&month={{ current_date.month }}&day={{ current_date.day }}"
                 data-role="button" data-icon="back" data-inline="true" data-iconpos="notext"/>volver</a>
             <h1>¿Qué comes?</h1>
-            <a href="{% url 'week' %}?year={{ current_date.year }}&month={{ current_date.month }}&day={{ current_date.day }}"
-                data-role="button" data-icon="false" data-inline="true" data-theme="e"/>guardar</a>
 	</div>
         <div data-role="content">
             <p><strong>¿Qué has comido el {{ current_date|date:"l j \d\e F" }} - {{ day_slot.slot_name }}?</strong></p>
@@ -29,16 +27,19 @@
             </div>
             <p><strong>Comidas elegidas:</strong></p>
             <ul data-role="listview">
-                <li data-icon="false" data-theme="c"> {# TODO: see if there is really necessary to add date and slot #}
+                <li data-icon="false" data-theme="c">
                     <p id="comocomo-chosen-food-kinds-{{ current_date.year }}-{{ current_date.month }}-{{ current_date.day }}-{{ day_slot.slot }}">
                         <!-- Here will be added kind icons -->
                     </p>
                 </li>
             </ul>
             <p><strong>Concreta un poco más:</strong></p>
-            <div id="comocomo-food-type-selects">
-                <!-- Here will be added type selectors -->
-            </div>
+            <form method="post" action="{% url 'slot_eaten' %}?year={{ current_date.year }}&month={{ current_date.month }}&day={{ current_date.day }}&slot={{ day_slot.slot }}">
+                <div id="comocomo-food-type-selects-{{ current_date.year }}-{{ current_date.month }}-{{ current_date.day }}-{{ day_slot.slot }}">
+                    <!-- Here will be added type selectors -->
+                </div>
+                <button type="submit" data-theme="e" name="submit" value="submit-value">enviar</button>
+            </form>
         </div>
     </div>
 {% endblock %}

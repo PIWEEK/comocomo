@@ -12,8 +12,6 @@ class FoodTypeCollection extends Backbone.Collection
 
 class SlotView extends Jackbone.View
 
-    el: '#comocomo-slot-page'
-
     events:
         'click .comocomo-kind-button': 'onClickKindButton'
 
@@ -26,33 +24,54 @@ class SlotView extends Jackbone.View
         @foodKinds = new FoodKindCollection()
         @foodTypes = new FoodTypeCollection()
 
+        @selectedFoodTypes = new FoodTypeCollection()
+
+        # TODO: parametrizar estos urls de algún modo
         $.ajax(
-            url: '/food_kinds/'    # TODO: parametrizar este url de algún modo
+            url: '/food_kinds/'
             success: (data, textStatus, jqXHR) =>
                 @foodKinds.reset(data)
+
+                $.ajax(
+                    url: '/food_types/'
+                    success: (data, textStatus, jqXHR) =>
+                        @foodTypes.reset(data)
+
+                        $.ajax(
+                            url: "/slot_eaten/?year=#{ @current_year }&month=#{ @current_month }&day=#{ @current_day }&slot=#{ @current_slot }"
+                            success: (data, textStatus, jqXHR) =>
+                                for typeId in data
+                                    type = @foodTypes.get(typeId)
+                                    kind = @foodKinds.get(type.get('kind_id'))
+                                    @addFoodKind(kind, type)
+                        )
+                )
         )
 
-        $.ajax(
-            url: '/food_types/'    # TODO: parametrizar este url de algún modo
-            success: (data, textStatus, jqXHR) =>
-                @foodTypes.reset(data)
-        )
+    addFoodKind: (kind, selectedType) ->
+        if selectedType is null
+            types = @foodTypes.filter((item) => (item.get('kind_id') == kind.get('id')))
+            selectedType = types[0]
 
-    onClickKindButton: (event) ->
-        target = $(event.currentTarget)
-        kind = @foodKinds.get(target.data('comocomo-kind-id'))
+        @selectedFoodTypes.add(selectedType)
 
         chosen = new ChosenFoodKindView({'kind': kind})
         chosen_id = "#comocomo-chosen-food-kinds-#{ @current_year }-#{ @current_month }-#{ @current_day }-#{ @current_slot }"
         $(chosen_id).append(chosen.render().$el.html())
 
-        type_select = new FoodTypeSelectView({'kind': kind, 'foodTypes': @foodTypes})
-        $('#comocomo-food-type-selects').append(type_select.render().$el.html())
+        type_select = new FoodTypeSelectView({'kind': kind, 'selectedType': selectedType, 'foodTypes': @foodTypes})
+        select_id = "#comocomo-food-type-selects-#{ @current_year }-#{ @current_month }-#{ @current_day }-#{ @current_slot }"
+        $(select_id).append(type_select.render().$el.html())
 
         # When adding roled elements, you need to call create and refresh operations for jqm to enhance them
         # See http://stackoverflow.com/questions/5925810/dynamically-adding-li-to-ul-in-jquery-mobile
-        $('#comocomo-food-type-selects div[data-role="fieldcontain"]').trigger('create')
-        $('#comocomo-food-type-selects div[data-role="fieldcontain"]').fieldcontain('refresh')
+        $("#{ select_id } div[data-role='fieldcontain']").trigger('create')
+        $("#{ select_id } div[data-role='fieldcontain']").fieldcontain('refresh')
+
+    onClickKindButton: (event) ->
+        target = $(event.currentTarget)
+        kind = @foodKinds.get(target.data('comocomo-kind-id'))
+        @addFoodKind(kind, null)
 
 
 class ChosenFoodKindView extends Jackbone.View
@@ -67,11 +86,12 @@ class FoodTypeSelectView extends Jackbone.View
 
     render: ->
         kind = @options['kind']
+        selectedType = @options['selectedType']
         types = @options['foodTypes'].filter((item) => (item.get('kind_id') == kind.get('id')))
 
         types_block = ""
         for type in types
-            is_checked = (if type.get('id') == 93 then 'checked="checked"' else '')
+            is_checked = (if selectedType and (type.get('id') == selectedType.get('id')) then 'checked="checked"' else '')
             types_block += """
                            <input type="radio" data-theme="c" name="select-type-#{ kind.get('id') }"
                                   id="select-type-#{ kind.get('id') }-#{ type.get('id') }"
@@ -97,5 +117,7 @@ class FoodTypeSelectView extends Jackbone.View
 
 
 $(document).bind('pageinit',
-    (event) -> slotView = new SlotView()
+    (event) ->
+        if event.target.id == 'comocomo-slot-page'
+            slotView = new SlotView({'el': event.target})
 )
