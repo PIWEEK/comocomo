@@ -35,6 +35,14 @@ class FoodKind(models.Model):
     def icon_path(self):
         return staticfiles_storage.url(os.path.join(self.ICONS_PATH, self.icon_name))
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'icon_path': self.icon_path,
+        }
+
 
 class FoodType(models.Model):
 
@@ -88,6 +96,14 @@ class FoodType(models.Model):
 
     def __unicode__(self):
         return u'{} {}'.format(self.kind.name, self.name)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'kind_id': self.kind.id,
+            'name': self.name,
+            'description': self.description,
+        }
 
 
 class SlotType:

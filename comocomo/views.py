@@ -1,11 +1,27 @@
 # -*- coding: utf-8 -*-
 
-from django.views.generic.base import TemplateView
+from django.views.generic.base import View, TemplateView
 from django.utils.translation import ugettext as _
+from django.http import HttpResponse
+
 import datetime
+import json
 
 from calendar import Calendar
 from models import FoodKind, FoodType, SlotType, DaySlot
+
+class FoodKindsView(View):
+
+    def get(self, request):
+        food_kinds_data = [food_kind.to_dict() for food_kind in FoodKind.objects.all()]
+        return HttpResponse(json.dumps(food_kinds_data), content_type='application/json')
+
+class FoodTypesView(View):
+
+    def get(self, request):
+        food_types_data = [food_type.to_dict() for food_type in FoodType.objects.all()]
+        return HttpResponse(json.dumps(food_types_data), content_type='application/json')
+
 
 class WeekView(TemplateView):
 

@@ -4,6 +4,8 @@
 
 {% block title %}Comocomo - Qué has comido{% endblock %}
 
+{% block bodytag %}class="comocomo-slot-page"{% endblock %}
+
 {% block body %}
     <div data-role="page" data-theme="b">
         <div data-role="header">
@@ -18,24 +20,45 @@
             <div class="ui-grid-c">
                 {% for kind in all_kinds %}
                     <div class="{% cycle 'ui-block-a' 'ui-block-b' 'ui-block-c' 'ui-block-d' %}">
-                        <a href="#" data-role="button" data-icon="false">
+                        <a href="#" data-role="button" data-icon="false" class="comocomo-kind-button"
+                            data-comocomo-kind-id="{{ kind.id }}">
                             <img src="{{ kind.icon_path }}"/>
                         </a>
                     </div>
                 {% endfor %}
             </div>
             <p><strong>Comidas elegidas:</strong></p>
-            <ul id="id_selected_types" data-role="listview">
+            <ul data-role="listview">
                 <li data-icon="false" data-theme="c">
-                <p>
+                <p id="comocomo-chosen-food-kinds">
+                    {% comment %}
                     <img src="{{ all_kinds.3.icon_path }}">
                     <img src="{{ all_kinds.2.icon_path }}">
                     <img src="{{ all_kinds.3.icon_path }}">
+                    {% endcomment %}
                 </p>
                 </li>
             </ul>
             <p><strong>Concreta un poco más:</strong></p>
-            <div data-role="collapsible-set">
+            <div id="comocomo-food-type-selects">
+                {% comment %}
+                {% with all_kinds.3 as kind %}
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <legend><img src="{{ kind.icon_path }}"/> {{ kind.name }}</legend><br/>
+                            {% for type in kind.food_types.all %}
+                                <input type="radio" data-theme="c" name="select-type-{{ kind.id }}"
+                                       id="select-type-{{ kind.id }}-{{ type.id }}"
+                                       value="{{ type.id }}"{% if type.id == 93 %} checked="checked" {% endif %} />
+                                <label for="select-type-{{ kind.id }}-{{ type.id }}">{{ type.name }}</label>
+                            {% endfor %}
+                        </fieldset>
+                    </div>
+                {% endwith %}
+                {% endcomment %}
+            </div>
+            <div data-role="collapsible-set" id="comocomo-food-type-selects">
+                {% comment %}
                 {% with all_kinds.3 as kind %}
                     <div data-role="collapsible" data-content-theme="c" data-collapsed="false">
                         <h2><img src="{{ kind.icon_path }}"/> {{ kind.name }}</h2>
@@ -66,6 +89,7 @@
                         </ul>
                     </div>
                 {% endwith %}
+                {% endcomment %}
             </div>
         </div>
     </div>
