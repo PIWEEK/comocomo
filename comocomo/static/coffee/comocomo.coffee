@@ -12,12 +12,17 @@ class FoodTypeCollection extends Backbone.Collection
 
 class SlotView extends Jackbone.View
 
-    el: 'body.comocomo-slot-page'
+    el: '#comocomo-slot-page'
 
     events:
         'click .comocomo-kind-button': 'onClickKindButton'
 
     initialize: ->
+        @current_year = @$el.data('comocomo-year')
+        @current_month = @$el.data('comocomo-month')
+        @current_day = @$el.data('comocomo-day')
+        @current_slot = @$el.data('comocomo-slot')
+
         @foodKinds = new FoodKindCollection()
         @foodTypes = new FoodTypeCollection()
 
@@ -38,17 +43,16 @@ class SlotView extends Jackbone.View
         kind = @foodKinds.get(target.data('comocomo-kind-id'))
 
         chosen = new ChosenFoodKindView({'kind': kind})
-        $('#comocomo-chosen-food-kinds').append(chosen.render().$el.html())
+        chosen_id = "#comocomo-chosen-food-kinds-#{ @current_year }-#{ @current_month }-#{ @current_day }-#{ @current_slot }"
+        $(chosen_id).append(chosen.render().$el.html())
 
         type_select = new FoodTypeSelectView({'kind': kind, 'foodTypes': @foodTypes})
         $('#comocomo-food-type-selects').append(type_select.render().$el.html())
+
+        # When adding roled elements, you need to call create and refresh operations for jqm to enhance them
+        # See http://stackoverflow.com/questions/5925810/dynamically-adding-li-to-ul-in-jquery-mobile
         $('#comocomo-food-type-selects div[data-role="fieldcontain"]').trigger('create')
         $('#comocomo-food-type-selects div[data-role="fieldcontain"]').fieldcontain('refresh')
-        #$('#comocomo-food-type-selects').collapsibleset('refresh')
-        ##type_select.$('ul').listview('refresh')
-        ## See http://stackoverflow.com/questions/5925810/dynamically-adding-li-to-ul-in-jquery-mobile
-        #$('#comocomo-food-type-selects').trigger('create')
-        #$('#comocomo-food-type-selects ul').listview('refresh')
 
 
 class ChosenFoodKindView extends Jackbone.View
@@ -88,24 +92,10 @@ class FoodTypeSelectView extends Jackbone.View
             #     <li><a href="#"><img src="{{ kind.icon_path }}"/> {{ kind.name }}</a><a href="#">delete</a></li>
             # </ul>
 
-        #types_block = ""
-        #for type in types
-        #    types_block += """
-        #                   <li data-icon="False">#{ type.get('name') }</li>
-        #                   """
-
-        #select_block = """
-        #               <div data-role="collapsible" data-content-theme="c" data-collapsed="false">
-        #                   <h2><img src="#{ kind.get('icon_path') }"/> #{ kind.get('name') }</h2>
-        #                   <ul data-role="listview">
-        #                       #{ types_block }
-        #                   </ul>
-        #               </div>
-        #               """
-
         @$el.html(select_block)
         return @
 
 
-slotView = new SlotView()
-
+$(document).bind('pageinit',
+    (event) -> slotView = new SlotView()
+)

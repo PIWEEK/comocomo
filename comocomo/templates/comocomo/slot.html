@@ -4,15 +4,15 @@
 
 {% block title %}Comocomo - Qué has comido{% endblock %}
 
-{% block bodytag %}class="comocomo-slot-page"{% endblock %}
-
 {% block body %}
-    <div data-role="page" data-theme="b">
+    <div data-role="page" data-theme="b" id="comocomo-slot-page"
+         data-comocomo-year={{ current_date.year }} data-comocomo-month={{ current_date.month }}
+         data-comocomo-day={{ current_date.day }} data-comocomo-slot={{ day_slot.slot }}>
         <div data-role="header">
-            <a href="{% url 'week' year=current_date.year month=current_date.month day=current_date.day %}"
+            <a href="{% url 'week' %}?year={{ current_date.year }}&month={{ current_date.month }}&day={{ current_date.day }}"
                 data-role="button" data-icon="back" data-inline="true" data-iconpos="notext"/>volver</a>
             <h1>¿Qué comes?</h1>
-            <a href="{% url 'week' year=current_date.year month=current_date.month day=current_date.day %}"
+            <a href="{% url 'week' %}?year={{ current_date.year }}&month={{ current_date.month }}&day={{ current_date.day }}"
                 data-role="button" data-icon="false" data-inline="true" data-theme="e"/>guardar</a>
 	</div>
         <div data-role="content">
@@ -29,67 +29,15 @@
             </div>
             <p><strong>Comidas elegidas:</strong></p>
             <ul data-role="listview">
-                <li data-icon="false" data-theme="c">
-                <p id="comocomo-chosen-food-kinds">
-                    {% comment %}
-                    <img src="{{ all_kinds.3.icon_path }}">
-                    <img src="{{ all_kinds.2.icon_path }}">
-                    <img src="{{ all_kinds.3.icon_path }}">
-                    {% endcomment %}
-                </p>
+                <li data-icon="false" data-theme="c"> {# TODO: see if there is really necessary to add date and slot #}
+                    <p id="comocomo-chosen-food-kinds-{{ current_date.year }}-{{ current_date.month }}-{{ current_date.day }}-{{ day_slot.slot }}">
+                        <!-- Here will be added kind icons -->
+                    </p>
                 </li>
             </ul>
             <p><strong>Concreta un poco más:</strong></p>
             <div id="comocomo-food-type-selects">
-                {% comment %}
-                {% with all_kinds.3 as kind %}
-                    <div data-role="fieldcontain">
-                        <fieldset data-role="controlgroup">
-                            <legend><img src="{{ kind.icon_path }}"/> {{ kind.name }}</legend><br/>
-                            {% for type in kind.food_types.all %}
-                                <input type="radio" data-theme="c" name="select-type-{{ kind.id }}"
-                                       id="select-type-{{ kind.id }}-{{ type.id }}"
-                                       value="{{ type.id }}"{% if type.id == 93 %} checked="checked" {% endif %} />
-                                <label for="select-type-{{ kind.id }}-{{ type.id }}">{{ type.name }}</label>
-                            {% endfor %}
-                        </fieldset>
-                    </div>
-                {% endwith %}
-                {% endcomment %}
-            </div>
-            <div data-role="collapsible-set" id="comocomo-food-type-selects">
-                {% comment %}
-                {% with all_kinds.3 as kind %}
-                    <div data-role="collapsible" data-content-theme="c" data-collapsed="false">
-                        <h2><img src="{{ kind.icon_path }}"/> {{ kind.name }}</h2>
-                        <ul data-role="listview">
-                            {% for type in kind.food_types.all %}
-                                <li data-icon="false">{{ type.name }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endwith %}
-                {% with all_kinds.2 as kind %}
-                    <div data-role="collapsible" data-content-theme="c" data-collapsed="false">
-                        <h2><img src="{{ kind.icon_path }}"/> {{ kind.name }}</h2>
-                        <ul data-role="listview">
-                            {% for type in kind.food_types.all %}
-                                <li data-icon="false">{{ type.name }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endwith %}
-                {% with all_kinds.3 as kind %}
-                    <div data-role="collapsible" data-content-theme="c" data-collapsed="false">
-                        <h2><img src="{{ kind.icon_path }}"/> {{ kind.name }}</h2>
-                        <ul data-role="listview">
-                            {% for type in kind.food_types.all %}
-                                <li data-icon="false">{{ type.name }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endwith %}
-                {% endcomment %}
+                <!-- Here will be added type selectors -->
             </div>
         </div>
     </div>

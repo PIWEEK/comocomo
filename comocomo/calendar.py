@@ -5,10 +5,11 @@ from datetime import date, timedelta
 class Calendar(object):
 
     def __init__(self, year=None, month=None, day=None):
-        if not year or not month or not day:
+        if not year and not month and not day:
             self._current_date = date.today()
         else:
-            self._current_date = date(year=year, month=month, day=day)
+            args = [item for item in (year, month, day) if item != None]
+            self._current_date = date(*args)
 
     @property
     def today(self):

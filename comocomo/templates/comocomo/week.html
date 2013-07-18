@@ -5,15 +5,15 @@
 {% block title %}Comocomo - Ver semana{% endblock %}
 
 {% block body %}
-    <div data-role="page" data-theme="b">
+    <div data-role="page" data-theme="b" id="comocomo-week-page">
         <div data-role="header">
             {% with calendar.minus_one_week as prev %}
-            <a href="{% url 'week' year=prev.year month=prev.month day=prev.day %}"
+            <a href="{% url 'week' %}?year={{ prev.year }}&month={{ prev.month }}&day={{ prev.day }}"
                 data-role="button" data-icon="arrow-l" data-inline="true" data-iconpos="notext"/>anterior</a>
             {% endwith %}
             <h1>{{ calendar.start_of_week|date:"j"}}-{{ calendar.end_of_week|date:"j b Y" }}</h1>
             {% with calendar.plus_one_week as next %}
-            <a href="{% url 'week' year=next.year month=next.month day=next.day %}"
+            <a href="{% url 'week' %}?year={{ next.year }}&month={{ next.month }}&day={{ next.day }}"
                 data-role="button" data-icon="arrow-r" data-inline="true" data-iconpos="notext"/>siguiente</a>
             {% endwith %}
 	</div>
@@ -25,7 +25,7 @@
                         <ul data-role="listview">
                             {% for slot in day_slots %}
                                 <li data-icon="false">
-                                    <a href="{% url 'slot' year=day.year month=day.month day=day.day slot=slot.slot %}">
+                                    <a href="{% url 'slot' %}?year={{ day.year }}&month={{ day.month }}&day={{ day.day }}&slot={{ slot.slot }}">
                                         <h3>{{ slot.slot_name }}</h3>
                                         {% if slot.id %}
                                             {% with slot.eaten.all as eaten %}

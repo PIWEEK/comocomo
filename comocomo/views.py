@@ -27,13 +27,19 @@ class WeekView(TemplateView):
 
     template_name = 'comocomo/week.html'
 
-    def get(self, request, year=None, month=None, day=None):
+    def get(self, request):
 
-        self.calendar = Calendar(
-            year = int(year) if year != None else None,
-            month = int(month) if month != None else None,
-            day = int(day) if day != None else None,
-        )
+        year = request.GET.get('year', None)
+        month = request.GET.get('month', None)
+        day = request.GET.get('day', None)
+        try:
+            self.calendar = Calendar(
+                year = int(year) if year else None,
+                month = int(month) if month else None,
+                day = int(day) if day else None,
+            )
+        except (TypeError, ValueError):
+            raise ValueError(_(u'Fecha incorrecta: {}/{}/{}'.format(day, month, year)))
 
         self.week= []
         for date in self.calendar.current_week:
@@ -59,8 +65,12 @@ class SlotView(TemplateView):
 
     template_name = 'comocomo/slot.html'
 
-    def get(self, request, year, month, day, slot):
+    def get(self, request):
 
+        year = request.GET.get('year', None)
+        month = request.GET.get('month', None)
+        day = request.GET.get('day', None)
+        slot = request.GET.get('slot', None)
         try:
             self.current_date = datetime.date(
                 year = int(year),
@@ -70,7 +80,10 @@ class SlotView(TemplateView):
         except (TypeError, ValueError):
             raise ValueError(_(u'Fecha incorrecta: {}/{}/{}'.format(day, month, year)))
 
-        if not int(slot) in SlotType.values():
+        try:
+            if not int(slot) in SlotType.values():
+                raise ValueError()
+        except ValueError:
             raise ValueError(_(u'Período incorrecto: {}'.format(slot)))
 
         try:

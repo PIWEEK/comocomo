@@ -16,6 +16,14 @@ class TestCalendar(TestCase):
         cal = Calendar(year=2013, month=7, day=16)
         self.assertEqual(cal.current_date, date(year=2013, month=7, day=16))
 
+    def test_calendar_with_bad_dates(self):
+        with self.assertRaises(ValueError):
+            cal = Calendar(year=2013, month=0, day=99)
+        with self.assertRaises(TypeError):
+            cal = Calendar(year=2013, month=1, day='error')
+        with self.assertRaises(TypeError):
+            cal = Calendar(year=2013)
+
     def test_today(self):
         cal = Calendar()
         self.assertEqual(cal.today, date.today())
