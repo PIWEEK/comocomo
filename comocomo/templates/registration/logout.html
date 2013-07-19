@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% load url from future %}
+
+{% block title %}Comocomo{% endblock %}
+
+{% block body %}
+    <div data-role="page" data-theme="b" id="comocomo-logout-page">
+        <div data-role="content">
+
+            <div class="comocomo-login-panel">
+                <h2>comocomo</h2>
+                <p><a href="{% url 'root' %}">Adiós...</a></p>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

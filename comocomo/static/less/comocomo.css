@@ -8,13 +8,16 @@
 .ui-link-inherit {
   background: #f3f3f3;
 }
-#comocomo-login-page {
+#comocomo-login-page,
+#comocomo-logout-page {
   background-image: url('../img/login-background.jpg');
 }
-#comocomo-login-page .ui-content {
+#comocomo-login-page .ui-content,
+#comocomo-logout-page .ui-content {
   background: transparent;
 }
-#comocomo-login-page form {
+#comocomo-login-page .comocomo-login-panel,
+#comocomo-logout-page .comocomo-login-panel {
   background: #333333;
   color: #eeeeee;
   padding: 10px;
