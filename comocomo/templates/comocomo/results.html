@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% load url from future %}
+
+{% block title %}Comocomo - Resultados{% endblock %}
+
+{% block body %}
+    <div data-role="page" data-theme="b" id="comocomo-results-page">
+        <div data-role="header">
+            <h1>Resultados</h1>
+	</div>
+        <div data-role="content">
+            <p><strong>Cómo comes:</strong></p>
+            <ul data-role="listview" data-theme="d" data-divider-theme="b">
+                <li data-role="list-divider">Equilibrio</li>
+                <li>
+                    <span class="comocomo-graph-label">Tú:</span>
+                    <span class="comocomo-graph">
+                        <div class="comocomo-graph-base">&nbsp;
+                            <div class="comocomo-graph-bar" style="width:60%">&nbsp;</div>
+                            <div class="comocomo-graph-value">60</div>
+                        </div>
+                    </span>
+                </li>
+                <li>
+                    <span class="comocomo-graph-label">Equilibrado:</span>
+                    <span class="comocomo-graph">
+                        <div class="comocomo-graph-base">&nbsp;
+                            <div class="comocomo-graph-bar" style="width:100%">&nbsp;</div>
+                            <div class="comocomo-graph-value">100</div>
+                        </div>
+                    </span>
+                </li>
+                <li>
+                    <span class="comocomo-graph-label">Ecológico:</span>
+                    <span class="comocomo-graph">
+                        <div class="comocomo-graph-base">&nbsp;
+                            <div class="comocomo-graph-bar" style="width:90%">&nbsp;</div>
+                            <div class="comocomo-graph-value">90</div>
+                        </div>
+                    </span>
+                </li>
+                <li data-role="list-divider">Calorías</li>
+                <li>
+                    <span class="comocomo-graph-label">Tú:</span>
+                    <span class="comocomo-graph">
+                        <div class="comocomo-graph-base">&nbsp;
+                            <div class="comocomo-graph-bar" style="width:40%">&nbsp;</div>
+                            <div class="comocomo-graph-value">40</div>
+                        </div>
+                    </span>
+                </li>
+                <li>
+                    <span class="comocomo-graph-label">Equilibrado:</span>
+                    <span class="comocomo-graph">
+                        <div class="comocomo-graph-base">&nbsp;
+                            <div class="comocomo-graph-bar" style="width:90%">&nbsp;</div>
+                            <div class="comocomo-graph-value">90</div>
+                        </div>
+                    </span>
+                </li>
+                <li>
+                    <span class="comocomo-graph-label">Ecológico:</span>
+                    <span class="comocomo-graph">
+                        <div class="comocomo-graph-base">&nbsp;
+                            <div class="comocomo-graph-bar" style="width:100%">&nbsp;</div>
+                            <div class="comocomo-graph-value">100</div>
+                        </div>
+                    </span>
+                </li>
+                <li data-role="list-divider">Precio</li>
+                <li>
+                    <span class="comocomo-graph-label">Tú:</span>
+                    <span class="comocomo-graph">
+                        <div class="comocomo-graph-base">&nbsp;
+                            <div class="comocomo-graph-bar" style="width:75%">&nbsp;</div>
+                            <div class="comocomo-graph-value">90€</div>
+                        </div>
+                    </span>
+                </li>
+                <li>
+                    <span class="comocomo-graph-label">Equilibrado:</span>
+                    <span class="comocomo-graph">
+                        <div class="comocomo-graph-base">&nbsp;
+                            <div class="comocomo-graph-bar" style="width:50%">&nbsp;</div>
+                            <div class="comocomo-graph-value">60€</div>
+                        </div>
+                    </span>
+                </li>
+                <li>
+                    <span class="comocomo-graph-label">Ecológico:</span>
+                    <span class="comocomo-graph">
+                        <div class="comocomo-graph-base">&nbsp;
+                            <div class="comocomo-graph-bar" style="width:100%">&nbsp;</div>
+                            <div class="comocomo-graph-value">120€</div>
+                        </div>
+                    </span>
+                </li>
+                <li data-role="list-divider">Ecológico</li>
+                <li>
+                    <span class="comocomo-graph-label">Tú:</span>
+                    <span class="comocomo-graph">
+                        <div class="comocomo-graph-base">&nbsp;
+                            <div class="comocomo-graph-bar" style="width:20%">&nbsp;</div>
+                            <div class="comocomo-graph-value">20</div>
+                        </div>
+                    </span>
+                </li>
+                <li>
+                    <span class="comocomo-graph-label">Equilibrado:</span>
+                    <span class="comocomo-graph">
+                        <div class="comocomo-graph-base">&nbsp;
+                            <div class="comocomo-graph-bar" style="width:40%">&nbsp;</div>
+                            <div class="comocomo-graph-value">40</div>
+                        </div>
+                    </span>
+                </li>
+                <li>
+                    <span class="comocomo-graph-label">Ecológico:</span>
+                    <span class="comocomo-graph">
+                        <div class="comocomo-graph-base">&nbsp;
+                            <div class="comocomo-graph-bar" style="width:100%">&nbsp;</div>
+                            <div class="comocomo-graph-value">100</div>
+                        </div>
+                    </span>
+                </li>
+                <li data-role="list-divider">Social</li>
+                <li>
+                    <span class="comocomo-graph-label">Tú:</span>
+                    <span class="comocomo-graph">
+                        <div class="comocomo-graph-base">&nbsp;
+                            <div class="comocomo-graph-bar" style="width:10%">&nbsp;</div>
+                            <div class="comocomo-graph-value">10</div>
+                        </div>
+                    </span>
+                </li>
+                <li>
+                    <span class="comocomo-graph-label">Equilibrado:</span>
+                    <span class="comocomo-graph">
+                        <div class="comocomo-graph-base">&nbsp;
+                            <div class="comocomo-graph-bar" style="width:30%">&nbsp;</div>
+                            <div class="comocomo-graph-value">30</div>
+                        </div>
+                    </span>
+                </li>
+                <li>
+                    <span class="comocomo-graph-label">Ecológico:</span>
+                    <span class="comocomo-graph">
+                        <div class="comocomo-graph-base">&nbsp;
+                            <div class="comocomo-graph-bar" style="width:90%">&nbsp;</div>
+                            <div class="comocomo-graph-value">90</div>
+                        </div>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div data-role="footer">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="{% url 'week' %}" data-icon="home" data-theme="e">Semana</a></li>
+                    <li><a href="{% url 'results' %}" data-icon="star" data-theme="e">Resultados</a></li>
+                </ul>
+            </div>
+	</div>
+    </div>
+{% endblock %}
+

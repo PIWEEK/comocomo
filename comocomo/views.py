@@ -166,3 +166,8 @@ class SlotEatenView(View):
             )
         )
 
+
+class ResultsView(TemplateView):
+
+    template_name = 'comocomo/results.html'
+

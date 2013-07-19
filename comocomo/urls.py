@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^week/$', WeekView.as_view(), name='week'),
     url(r'^slot/$', SlotView.as_view(), name='slot'),
     url(r'^slot_eaten/$', SlotEatenView.as_view(), name='slot_eaten'),
+    url(r'^results/$', ResultsView.as_view(), name='results'),
 
     url(r'^admin/', include(admin.site.urls)),
 )
