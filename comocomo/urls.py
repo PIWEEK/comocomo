@@ -8,6 +8,7 @@ from comocomo.views import *
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^$', RootView.as_view(), name='root'),
     url(r'^food_kinds/$', FoodKindsView.as_view(), name='food_kinds'),
     url(r'^food_types/$', FoodTypesView.as_view(), name='food_types'),
     url(r'^week/$', WeekView.as_view(), name='week'),
@@ -16,6 +17,8 @@ urlpatterns = patterns('',
     url(r'^results/$', ResultsView.as_view(), name='results'),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^accounts/', include('registration.backends.default.urls')),
+
 )
 
 if settings.DEBUG:

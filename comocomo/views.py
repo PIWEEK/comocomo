@@ -11,6 +11,14 @@ import json
 from calendar import Calendar
 from models import FoodKind, FoodType, SlotType, DaySlot
 
+class RootView(View):
+
+    def get(self, request):
+        if request.user.is_anonymous():
+            return HttpResponseRedirect(reverse('auth_login'))
+        else:
+            return HttpResponseRedirect(reverse('week'))
+
 class FoodKindsView(View):
 
     def get(self, request):

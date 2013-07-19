@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% load url from future %}
+
+{% block title %}Comocomo{% endblock %}
+
+{% block body %}
+    <div data-role="page" data-theme="b" id="comocomo-login-page">
+        <div data-role="content">
+
+            <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+                {% csrf_token %}
+
+                <h2>comocomo</h2>
+                {% if form.non_field_errors %}
+                    {{ form.non_field_errors }}
+                {% endif %}
+
+                <div data-role="fieldcontain">
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                    {% if form.username.errors %}{{ form.username.errors }}{% endif %}
+                </div>
+                <div data-role="fieldcontain">
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+                    {% if form.password.errors %}{{ form.password.errors }}{% endif %}
+                </div>
+                <input type="submit" value="login" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+
+        </div>
+    </div>
+{% endblock %}
