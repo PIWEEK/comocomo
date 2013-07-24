@@ -1,0 +1,5 @@
+# You must create a local.py (for example by copying this file).
+# and put it here your local settings.
+
+from .common import *
+

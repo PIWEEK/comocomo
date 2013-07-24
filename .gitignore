@@ -5,6 +5,6 @@
 *~
 .~lock.*
 tags
-tags
 *.db
+**/settings/local.py
 
