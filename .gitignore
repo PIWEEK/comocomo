@@ -9,4 +9,4 @@ tags
 **/settings/local.py
 old/database.db
 old/tags
-
+*/bedca/*.json
