@@ -7,4 +7,6 @@
 tags
 *.db
 **/settings/local.py
+old/database.db
+old/tags
 
