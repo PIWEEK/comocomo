@@ -3,15 +3,21 @@
     <h1>Comocomo</h1>
     <img src="assets/img/logo.png" />
   </div>
-  <form>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="field">
       <label for="username">Usuario</label>
-      <input type="text" id="username" name="username" />
+      <input type="text" id="username" formControlName="username" required />
+      <div *ngIf="username.invalid && (username.touched || username.dirty)" class="field-errors">
+        <div *ngIf="username.errors.required" class="field-error-message">Este campo es obligatorio</div>
+      </div>
     </div>
     <div class="field">
       <label for="password">Contraseña</label>
-      <input type="password" id="password" name="password" />
+      <input type="password" id="password" formControlName="password" required />
+      <div *ngIf="password.invalid && (password.touched || password.dirty)" class="field-errors">
+        <div *ngIf="password.errors.required" class="field-error-message">Este campo es obligatorio</div>
+      </div>
     </div>
-    <button type="submit">Entrar</button>
+    <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
   </form>
 </div>
