@@ -75,8 +75,6 @@ groups = [extract_group_info(food) for food in groups]
 ######################
 
 for group in groups:
-    file_name = f"data/{group['id']}.json"
-
     put_to_sleep(f"extracting products for group {group['ori_name']}")
     products = load_xml_with_id_and_payload('group', group['id']).xpath('//food')
     products = [extract_product_info(product) for product in products]
