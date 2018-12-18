@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'nav-bar-component',
@@ -7,8 +7,19 @@ import { Component, Input } from '@angular/core';
 })
 export class NavBarComponentComponent {
 
-  @Input() currentSection: string;
+  @Input() public content: string = '';
+  @Input() public hasLeft: boolean = true;
+  @Input() public hasRight: boolean = true;
+  @Output() public leftClicked = new EventEmitter<void>();
+  @Output() public rightClicked = new EventEmitter<void>();
 
   constructor() { }
 
+  public leftClick() {
+    this.leftClicked.emit();
+  }
+
+  public rightClick() {
+    this.rightClicked.emit();
+  }
 }

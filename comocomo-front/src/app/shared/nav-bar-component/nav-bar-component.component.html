@@ -1,7 +1,11 @@
 <div class="main-nav-bar">
-  <ul>
-    <li [class.active]="currentSection === 'week'"><a routerLink="/week">Semana</a></li>
-    <li [class.active]="currentSection === 'day'"><a routerLink="/day">Hoy</a></li>
-    <li [class.active]="currentSection === 'barns'"><a routerLink="/barns">Estadísticas</a></li>
-  </ul>
+  <a *ngIf="hasLeft" (click)="leftClick()" class="left-arrow">
+    <svg><use href="#left-arrow" /></svg>
+  </a>
+  <div *ngIf="content" class="content">
+    {{ content }}
+  </div>
+  <a *ngIf="hasRight" (click)="rightClick()" class="right-arrow">
+    <svg><use href="#right-arrow" /></svg>
+  </a>
 </div>
