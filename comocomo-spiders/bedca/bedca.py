@@ -75,18 +75,23 @@ groups = [extract_group_info(food) for food in groups]
 ######################
 
 for group in groups:
-    put_to_sleep(f"extracting products for group {group['ori_name']}", 10, 20)
     started_at = time.time()
+    group_name = group['ori_name']
+    put_to_sleep(f"extracting products for group {group_name}", 10, 20)
+
     products = load_xml_with_id_and_payload('group', group['id']).xpath('//food')
     products = [extract_product_info(product) for product in products]
 
     for product in products:
-        put_to_sleep(f"extracting values for product {product['ori_name']}", 2, 6)
-        values = load_xml_with_id_and_payload('product_simple', 933).xpath('//foodvalue')
+        product_id = product['id']
+        product_name = product['ori_name']
+        put_to_sleep(f"extracting values for product {product_name}", 2, 6)
+
+        values = load_xml_with_id_and_payload('product_simple', product_id).xpath('//foodvalue')
         values = [extract_product_values(value) for value in values]
         product['values'] = values
 
     group['products'] = products
     ended_at = time.time()
     dump_to_file(group)
-    print(f"the group {group['ori_name']} took {ended_at - started_at} seconds to be processed")
+    print(f"the group {group_name} took {ended_at - started_at} seconds to be processed")
