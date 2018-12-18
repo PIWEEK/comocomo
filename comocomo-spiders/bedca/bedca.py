@@ -17,8 +17,9 @@ REQ_HEADERS = {'Content-Type': 'text/xml'}
 
 def put_to_sleep(message):
     print(message)
-    seconds = randint(2, 6) # waits politely between 2 and 6 seconds
-    print(seconds)
+    # always waits politely between 2 and 6 seconds
+    # before doing anything
+    seconds = randint(2, 6)
     time.sleep(seconds)
 
 def load_xml_with_id_and_payload(payload, id=None):
@@ -54,6 +55,13 @@ def extract_product_values(value):
             'c_eng_name': extract_attr(value, 'c_eng_name'),
             'best_location': extract_attr(value, 'best_location')}
 
+def dump_to_file(group):
+    file_name = f"data/{group['id']}.json"
+    group_json = json.dumps(group)
+
+    with open(file_name, "w") as group_file:
+        group_file.write(group_json)
+
 ######################
 ####### GROUPS #######
 ######################
@@ -80,7 +88,4 @@ for group in groups:
         product['values'] = values
 
     group['products'] = products
-    group_json = json.dumps(group)
-
-    with open(file_name, "w") as group_file:
-        group_file.write(group_json)
+    dump_to_file(group)
