@@ -18,6 +18,7 @@
         <div *ngIf="password.errors.required" class="field-error-message">Este campo es obligatorio</div>
       </div>
     </div>
+    <div class=error *ngIf=errorMessage>{{ errorMessage }}</div>
     <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
   </form>
   <div class="attribution">

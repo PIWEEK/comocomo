@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { UsersApiService } from '../data-model/users/users-api.service';
+import {filter, catchError} from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import { UsersApiService } from '../data-model/users/users-api.service';
   styleUrls: ['./login.component.less']
 })
 export class LoginComponent {
+  public errorMessage = '';
 
   public loginForm = this.fb.group({
     username: ['', Validators.required],
@@ -32,9 +34,11 @@ export class LoginComponent {
 
   public onSubmit() {
     const value = this.loginForm.value;
-    this.usersApiService.login(value.username, value.password).subscribe(
-      () => this.router.navigate(['/day'])
-    );
+    this.usersApiService.login(value.username, value.password)
+      .subscribe(
+        () => this.router.navigate(['/day']),
+        (userMessage) => this.errorMessage = userMessage
+      );
   }
 
 }
