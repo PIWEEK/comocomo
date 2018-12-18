@@ -10,12 +10,13 @@ def serialize_subgroups_to_json():
 
     try:
         driver = webdriver.Chrome()
-        options = navigate_to_groups(driver)
+        options = [opt.text for opt in navigate_to_groups(driver)]
         driver.implicitly_wait(10)
 
-        for idx, option in enumerate(options):
-            index = idx + 1
-            option_name = option.text
+        for index, option_name in enumerate(options):
+            # We need to navigate here again for each iteration to avoid
+            # elements to get stale
+            navigate_to_groups(driver)
 
             sleeping(5, f'next iteration {index}')
             select = Select(driver.find_element_by_xpath('//select[@id="fglist"]'))
@@ -28,8 +29,6 @@ def serialize_subgroups_to_json():
             items = driver.find_elements_by_xpath('//tr[starts-with(@class, "row-")]')
             subgroup = create_subgroup(option_name, items)
             subgroups.append(subgroup)
-
-            options = navigate_to_groups(driver)
     finally:
         driver.close()
 
@@ -41,13 +40,10 @@ def sleeping(seconds, message):
 
 def create_subgroup(option, food_items):
     print(f"creating group {option}")
-    import pdb; pdb.set_trace()
-    food_list = [{'id': food.find_element_by_xpath('/td[position()=1]/a').text,
-                  'name': food.find_element_by_xpath('/td[position()=2]/a').text,
-                  'spanish_name': food.find_element_by_xpath('/td[position()=3]/a').text} for food in food_items]
+    food_list = [{'id': food.find_element_by_xpath('td[position()=1]/a').text,
+                  'name': food.find_element_by_xpath('td[position()=2]/a').text,
+                  'spanish_name': food.find_element_by_xpath('td[position()=3]/a').text} for food in food_items]
 
-    subgroup = {'name': option, 'items': food_list}
-    print(subgroup)
-    return subgroup
+    return {'name': option, 'items': food_list}
 
 serialize_subgroups_to_json()
