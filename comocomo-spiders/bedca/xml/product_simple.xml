@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<foodquery>
+    <type level="2"/>
+    <selection>
+        <atribute name="f_id"/>
+        <atribute name="f_ori_name"/>
+        <atribute name="f_eng_name"/>
+        <atribute name="eur_name"/>
+        <atribute name="u_description"/>
+        <atribute name="c_ori_name"/>
+        <atribute name="c_eng_name"/>
+        <atribute name="best_location"/>
+    </selection>
+    <condition>
+        <cond1>
+            <atribute1 name="f_id"/>
+        </cond1>
+        <relation type="EQUAL"/>
+        <cond3>%IDENTIFIER%</cond3>
+    </condition>
+    <condition>
+        <cond1>
+            <atribute1 name="publico"/>
+        </cond1>
+        <relation type="EQUAL"/>
+        <cond3>1</cond3>
+    </condition>
+    <order ordtype="ASC">
+        <atribute3 name="componentgroup_id"/>
+    </order>
+</foodquery>
