@@ -9,6 +9,7 @@ import { WeekComponent } from './week/week.component';
 import { DayComponent } from './day/day.component';
 import { BarnsComponent } from './barns/barns.component';
 import { GatheringComponent } from './gathering/gathering.component';
+import { NavBarComponentComponent } from './shared/nav-bar-component/nav-bar-component.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { GatheringComponent } from './gathering/gathering.component';
     WeekComponent,
     DayComponent,
     BarnsComponent,
-    GatheringComponent
+    GatheringComponent,
+    NavBarComponentComponent
   ],
   imports: [
     BrowserModule,
