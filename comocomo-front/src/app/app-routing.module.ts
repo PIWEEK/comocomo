@@ -9,9 +9,9 @@ import { BarnsComponent } from './barns/barns.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
-  { path: 'day', component: DayComponent},
   { path: 'week', component: WeekComponent},
-  { path: 'gathering', component: GatheringComponent},
+  { path: 'day', component: DayComponent},
+  { path: 'day/:slot', component: GatheringComponent},
   { path: 'barns', component: BarnsComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];

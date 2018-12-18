@@ -1,5 +1,6 @@
 <nav-bar-component [content]="'10 dic 2018'"></nav-bar-component>
-<div class="day-container">
+
+<div class="main-container">
   <div class="day-title">Miércoles 10 de diciembre</div>
   <ul class="day-slots">
     <li><a (click)="slotClick(0)">Desayuno</a></li>
@@ -9,4 +10,5 @@
     <li><a (click)="slotClick(4)">Cena</a></li>
   </ul>
 </div>
+
 <menu-bar-component [currentSection]="'day'"></menu-bar-component>
