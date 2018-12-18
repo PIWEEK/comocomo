@@ -12,4 +12,8 @@ export class DayComponent implements OnInit {
   ngOnInit() {
   }
 
+  public slotClick(slotNumber: number) {
+    console.log('slot', slotNumber);
+  }
+
 }
