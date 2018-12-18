@@ -15,11 +15,11 @@ REQ_HEADERS = {'Content-Type': 'text/xml'}
 ###### FUNCTIONS #####
 ######################
 
-def put_to_sleep(message):
+def put_to_sleep(message, from_seconds, to_seconds):
     print(message)
     # always waits politely between 2 and 6 seconds
     # before doing anything
-    seconds = randint(2, 6)
+    seconds = randint(from_seconds, to_seconds)
     time.sleep(seconds)
 
 def load_xml_with_id_and_payload(payload, id=None):
@@ -66,7 +66,7 @@ def dump_to_file(group):
 ####### GROUPS #######
 ######################
 
-put_to_sleep('extracting groups')
+print('extracting groups')
 groups = load_xml_with_id_and_payload('groups').xpath('//food')
 groups = [extract_group_info(food) for food in groups]
 
@@ -75,15 +75,18 @@ groups = [extract_group_info(food) for food in groups]
 ######################
 
 for group in groups:
-    put_to_sleep(f"extracting products for group {group['ori_name']}")
+    put_to_sleep(f"extracting products for group {group['ori_name']}", 10, 20)
+    started_at = time.time()
     products = load_xml_with_id_and_payload('group', group['id']).xpath('//food')
     products = [extract_product_info(product) for product in products]
 
     for product in products:
-        put_to_sleep(f"extracting values for product {product['ori_name']}")
+        put_to_sleep(f"extracting values for product {product['ori_name']}", 2, 6)
         values = load_xml_with_id_and_payload('product_simple', 933).xpath('//foodvalue')
         values = [extract_product_values(value) for value in values]
         product['values'] = values
 
     group['products'] = products
+    ended_at = time.time()
     dump_to_file(group)
+    print(f"the group {group['ori_name']} took {ended_at - started_at} seconds to be processed")

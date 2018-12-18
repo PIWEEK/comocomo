@@ -9,4 +9,4 @@ db.sqlite3
 **/settings/local.py
 old/database.db
 old/tags
-*/bedca/*.json
+*/bedca/**/*.json
