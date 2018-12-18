@@ -5,7 +5,7 @@
 *~
 .~lock.*
 tags
-*.db
+db.sqlite3
 **/settings/local.py
 old/database.db
 old/tags
