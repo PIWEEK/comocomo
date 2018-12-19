@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path, re_path
+from rest_framework import routers
+from gathering import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('rest_auth.urls')),
+    path('api/v1/food-kinds', views.FoodKindViewSet.as_view({'get': 'list'}), name='food-kinds'),
 ]
