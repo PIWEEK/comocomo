@@ -1,0 +1,19 @@
+<div class="main-nav-bar">
+  <a
+    *ngIf="leftRouterLink"
+    [routerLink]="leftRouterLink"
+    [queryParams]="leftQueryParams"
+    class="left-arrow">
+    <svg><use href="#left-arrow" /></svg>
+  </a>
+  <div *ngIf="content" class="content">
+    {{ content }}
+  </div>
+  <a
+    *ngIf="rightRouterLink"
+    [routerLink]="rightRouterLink"
+    [queryParams]="rightQueryParams"
+    class="right-arrow">
+    <svg><use href="#right-arrow" /></svg>
+  </a>
+</div>

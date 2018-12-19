@@ -1,20 +1,30 @@
-<nav-bar-component [content]="'17-23 dic 2018'"></nav-bar-component>
+<nav-bar
+  *ngIf="currentWeek"
+  [content]="currentWeekName"
+  [leftRouterLink]="['/week']"
+  [leftQueryParams]="{week: previousWeekLink}"
+  [rightRouterLink]="['/week']"
+  [rightQueryParams]="{week: nextWeekLink}"
+  ></nav-bar>
 
-<div class="main-container">
-  <a class="day"><span class="day-title">Lunes 17 dic</span><svg><use href="#right-chevron" /></svg></a>
-  <a class="day"><span class="day-title">Martes 18 dic</span><svg><use href="#right-chevron" /></svg></a>
-  <a class="day open"><span class="day-title">Miércoles 19 dic</span><svg><use href="#right-chevron" /></svg></a>
-  <ul class="day-slots">
-    <li><a (click)="slotClick(0)">Desayuno</a></li>
-    <li><a (click)="slotClick(1)">Media mañana</a></li>
-    <li><a (click)="slotClick(2)">Comida</a></li>
-    <li><a (click)="slotClick(3)">Merienda</a></li>
-    <li><a (click)="slotClick(4)">Cena</a></li>
-  </ul>
-  <a class="day"><span class="day-title">Jueves 20 dic</span><svg><use href="#right-chevron" /></svg></a>
-  <a class="day"><span class="day-title">Viernes 21 dic</span><svg><use href="#right-chevron" /></svg></a>
-  <a class="day"><span class="day-title">Sábado 22 dic</span><svg><use href="#right-chevron" /></svg></a>
-  <a class="day"><span class="day-title">Domingo 23 dic</span><svg><use href="#right-chevron" /></svg></a>
+<div *ngIf="currentWeek" class="main-container">
+  <ng-container *ngFor="let dayIndex of weekDays">
+    <a
+      [routerLink]="'/week'"
+      [queryParams]="{week: currentWeekLink, open:dayIndex}"
+      class="day"
+      [class.open]="dayIndex === currentDayIndex">
+      <span class="day-title">{{ weekDayName(dayIndex) }}</span>
+      <svg><use href="#right-chevron" /></svg>
+    </a>
+    <ul *ngIf="dayIndex === currentDayIndex" class="day-slots">
+      <li><a (click)="slotClick(0)">Desayuno</a></li>
+      <li><a (click)="slotClick(1)">Media mañana</a></li>
+      <li><a (click)="slotClick(2)">Comida</a></li>
+      <li><a (click)="slotClick(3)">Merienda</a></li>
+      <li><a (click)="slotClick(4)">Cena</a></li>
+    </ul>
+  </ng-container>
 </div>
 
-<menu-bar-component [currentSection]="'week'"></menu-bar-component>
+<menu-bar [currentSection]="'week'"></menu-bar>

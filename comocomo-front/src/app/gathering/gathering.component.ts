@@ -15,8 +15,4 @@ export class GatheringComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  public onBackClicked() {
-    this.router.navigate(['/week']);
-  }
 }

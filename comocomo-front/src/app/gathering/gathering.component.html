@@ -1,8 +1,7 @@
-<nav-bar-component
-  [hasRight]='false'
+<nav-bar
   [content]="'¿Qué comes?'"
-  (leftClicked)="onBackClicked()"
-  ></nav-bar-component>
+  [leftRouterLink]="['/week']"
+  ></nav-bar>
 
 <div class="main-container">
   <div class="gathering-title">¿Qué has merendado el lunes 10?</div>
@@ -20,4 +19,4 @@
   </div>
 </div>
 
-<menu-bar-component [currentSection]="'day'"></menu-bar-component>
+<menu-bar [currentSection]="'day'"></menu-bar>
