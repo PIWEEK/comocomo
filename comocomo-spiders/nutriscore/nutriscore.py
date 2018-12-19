@@ -178,22 +178,58 @@ def calculate_a_points(product, is_beverage):
 
     return energy + sugars + fatsat + sodium
 
-def calculate_c_points(product, is_beverage):
+def calculate_fiber(values):
+    """Calculates nutriscore C points: fibers"""
+    value = get_value_of(values, 'FIBT')
+
+    REFERENCE = {
+        0.7: 1,
+        1.4: 2,
+        2.1: 3,
+        2.8: 4,
+        3.5: 5
+    }
+
+    try:
+        return next(v for (k,v) in REFERENCE.items() if value > k)
+    except:
+        return 0 # <= 0.7
+
+def calculate_proteins(values):
+    """Calculates nutriscore C points: proteins"""
+    value = get_value_of(values, 'PROT')
+
+    REFERENCE = {
+        1.6: 1,
+        3.2: 2,
+        4.8: 3,
+        6.4: 4,
+        8.0: 5
+    }
+
+    try:
+        return next(v for (k,v) in REFERENCE.items() if value > k)
+    except:
+        return 0 # <= 1.6
+
+def calculate_c_points(product, is_beverage, is_fruit_or_vegetable):
     """Calculates nutriscore C points: Fruits, vegetables,
     fiber and proteins"""
-    fru_n_veg_solid = 0
-    fru_n_veg_bever = 0
-    fiber = 0
-    prote = 0
+    values = product['values']
+    # We are evaluating raw food, so an orange is supposed have 100%
+    # of fruit whereas a steak has 0% of fruit
+    fandv = 10 if is_fruit_or_vegetable else 0
+    fiber = calculate_fiber(values)
+    prote = calculate_proteins(values)
 
-    return 0
+    return fandv + fiber + prote
 
-def nutriscore(product, is_beverage):
+def nutriscore(product, is_beverage, is_fruit_or_vegetable):
     """Calculates the NUTRISCORE of a given product"""
     pointa = calculate_a_points(product, is_beverage)
-    pointc = calculate_c_points(product, is_beverage)
+    pointc = calculate_c_points(product, is_beverage, is_fruit_or_vegetable)
 
-    return pointa + pointc
+    return pointa - pointc
 
 
 p = {'name': 'product_a',
@@ -202,7 +238,9 @@ p = {'name': 'product_a',
          {'eur_name': 'ENERC', 'best_location': '10'},
          {'eur_name': 'FATSAT', 'best_location': '10'},
          {'eur_name': 'NA', 'best_location': '10'},
+         {'eur_name': 'FIBT', 'best_location': '10'},
+         {'eur_name': 'PROT', 'best_location': '10'},
      ]}
 
-score = nutriscore(p, True)
+score = nutriscore(p, True, True)
 print(score)
