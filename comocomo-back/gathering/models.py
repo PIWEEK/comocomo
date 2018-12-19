@@ -6,7 +6,7 @@ import os.path
 
 class FoodKind(models.Model):
 
-    ICONS_PATH = 'img/icons'
+    ICONS_PATH = 'gathering/img/icons'
 
     name = models.CharField(
                 blank=False, null=False, max_length=255,

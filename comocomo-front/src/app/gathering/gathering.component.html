@@ -6,7 +6,11 @@
 <div class="main-container">
   <div class="gathering-title">¿Qué has {{ slotName }} el {{ dayNameShort }}?</div>
   <div class="food-groups">
-    <button class="food-group" *ngFor="let food of (foodKinds$ | async)"><img src="{{ food.icon_path }}" />{{ food.name }}</button>
+    <button
+      class="food-group"
+      *ngFor="let food of (foodKinds$ | async)">
+      <img src="http://localhost:8000{{ food.icon_path }}" />{{ food.name }}
+    </button>
   </div>
 </div>
 
