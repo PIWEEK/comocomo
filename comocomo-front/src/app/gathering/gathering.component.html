@@ -6,16 +6,7 @@
 <div class="main-container">
   <div class="gathering-title">¿Qué has merendado el lunes 10?</div>
   <div class="food-groups">
-    <button class="food-group"><img src="http://comocomo.oromar.net/static/img/icons/steak.png" />Carne</button>
-    <button class="food-group"><img src="http://comocomo.oromar.net/static/img/icons/bottle.png" />Bebida</button>
-    <button class="food-group"><img src="http://comocomo.oromar.net/static/img/icons/wheat.png" />Cereal</button>
-    <button class="food-group"><img src="http://comocomo.oromar.net/static/img/icons/cupcake.png" />Pastel</button>
-    <button class="food-group"><img src="http://comocomo.oromar.net/static/img/icons/apple.png" />Fruta</button>
-    <button class="food-group"><img src="http://comocomo.oromar.net/static/img/icons/eggs.png" />Huevos</button>
-    <button class="food-group"><img src="http://comocomo.oromar.net/static/img/icons/apple.png" />Fruta</button>
-    <button class="food-group"><img src="http://comocomo.oromar.net/static/img/icons/wheat.png" />Cereal</button>
-    <button class="food-group"><img src="http://comocomo.oromar.net/static/img/icons/eggs.png" />Huevos</button>
-    <button class="food-group"><img src="http://comocomo.oromar.net/static/img/icons/cupcake.png" />Pastel</button>
+    <button class="food-group" *ngFor="let food of (foodKinds$ | async)"><img src="{{ food.icon_path }}" />{{ food.name }}</button>
   </div>
 </div>
 

@@ -21,5 +21,5 @@ from gathering import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('rest_auth.urls')),
-    path('api/v1/food-kinds', views.FoodKindViewSet.as_view({'get': 'list'}), name='food-kinds'),
+    path('api/v1/food-kinds/', views.FoodKindViewSet.as_view({'get': 'list'}), name='food-kinds'),
 ]
