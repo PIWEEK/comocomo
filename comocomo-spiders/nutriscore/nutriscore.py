@@ -60,7 +60,6 @@ def calculate_energy(values, is_beverage):
     value = get_value_of(values, 'ENERC')
     result = _energy_beverage(value) if is_beverage else _energy_solids(value)
 
-    print(f"energy: {result} for value {value}")
     return result
 
 ############
@@ -111,7 +110,6 @@ def calculate_sugars(values, is_beverage):
     value = get_value_of(values, 'SUGAR')
     result = _sugars_beverage(value) if is_beverage else _sugars_solids(value)
 
-    print(f"sugars: {result} for value {value}")
     return result
 
 ############
@@ -142,7 +140,6 @@ def calculate_fatsat(values):
     except:
         result = 0 # <= 1
 
-    print(f"fatsat: {result} of value {value}")
     return result
 
 ############
@@ -173,7 +170,6 @@ def calculate_sodium(values):
     except:
         result = 0 # <= 1
 
-    print(f"sodium: {result} of value {value}")
     return result
 
 ############
@@ -209,7 +205,6 @@ def calculate_fiber(values):
     except:
         result =0 # <= 0.7
 
-    print(f"fiber: {result} of value {value}")
     return result
 
 def calculate_proteins(values):
@@ -230,7 +225,6 @@ def calculate_proteins(values):
     except:
         result = 0 # <= 1.6
 
-    print(f"proteins: {result} of value {value}")
     return result
 
 def calculate_c_points(product, is_beverage, is_fruit_or_vegetable):
