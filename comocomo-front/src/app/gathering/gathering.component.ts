@@ -16,6 +16,8 @@ export class GatheringComponent implements OnInit {
   public currentDate: Moment;
   public currentSlot: number;
 
+  public returnParams: Object;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -32,6 +34,15 @@ export class GatheringComponent implements OnInit {
         const slotParam = params.get('slot');
         const slot = parseInt(slotParam, 10);
         this.currentSlot = isNaN(slot) ? null : slot;
+      }
+    );
+
+    this.route.queryParamMap.subscribe(
+      (params) => {
+        this.returnParams = {
+          week: params.get('week'),
+          open: params.get('open')
+        };
       }
     );
 

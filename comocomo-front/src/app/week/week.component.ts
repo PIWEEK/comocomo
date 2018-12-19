@@ -13,6 +13,8 @@ export class WeekComponent implements OnInit {
 
   public currentWeek: Moment;
   public currentDayIndex: number;
+  public isToday: boolean;
+  public savedParams = {};
 
   constructor(
     private router: Router,
@@ -30,15 +32,19 @@ export class WeekComponent implements OnInit {
           this.currentWeek = this.dates.fromLink(weekParam);
         }
 
+        this.isToday = false;
         const openParam = params.get('open');
         if (!openParam) {
           this.currentDayIndex = null;
         } else if (openParam === 'today') {
           this.currentDayIndex = this.dates.currentDayIndex();
+          this.isToday = true;
         } else {
           const open = parseInt(openParam, 10);
           this.currentDayIndex = isNaN(open) ? null : open;
         }
+
+        this.savedParams = {week: weekParam, open: openParam};
       }
     );
   }

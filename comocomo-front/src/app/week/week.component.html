@@ -1,16 +1,16 @@
 <nav-bar
   *ngIf="currentWeek"
   [content]="currentWeekName"
-  [leftRouterLink]="['/week']"
+  [leftRouterLink]="['/gathering']"
   [leftQueryParams]="{week: previousWeekLink}"
-  [rightRouterLink]="['/week']"
+  [rightRouterLink]="['/gathering']"
   [rightQueryParams]="{week: nextWeekLink}"
   ></nav-bar>
 
 <div *ngIf="currentWeek" class="main-container">
   <ng-container *ngFor="let dayIndex of weekDays">
     <a
-      [routerLink]="'/week'"
+      [routerLink]="'/gathering'"
       [queryParams]="{week: currentWeekLink, open:dayIndex}"
       class="day"
       [class.open]="dayIndex === currentDayIndex">
@@ -19,7 +19,7 @@
     </a>
     <ul *ngIf="dayIndex === currentDayIndex" class="day-slots">
       <li *ngFor="let slotName of daySlots; let slotIndex = index">
-        <a [routerLink]="['/day', weekDayLink(dayIndex), slotIndex]">
+        <a [routerLink]="['/gathering', weekDayLink(dayIndex), slotIndex]" [queryParams]="savedParams">
           {{ slotName }}
         </a>
       </li>
@@ -27,4 +27,4 @@
   </ng-container>
 </div>
 
-<menu-bar [currentSection]="'week'"></menu-bar>
+<menu-bar [currentSection]="isToday ? 'day' : 'week'"></menu-bar>

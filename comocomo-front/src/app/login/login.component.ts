@@ -36,7 +36,7 @@ export class LoginComponent {
     const value = this.loginForm.value;
     this.usersApiService.login(value.username, value.password)
       .subscribe(
-        () => this.router.navigate(['/day']),
+        () => this.router.navigate(['/gathering'], {queryParams: {open: 'today'}}),
         (userMessage) => this.errorMessage = userMessage
       );
   }
