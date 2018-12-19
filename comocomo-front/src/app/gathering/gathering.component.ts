@@ -17,6 +17,6 @@ export class GatheringComponent implements OnInit {
   }
 
   public onBackClicked() {
-    this.router.navigate(['/day']);
+    this.router.navigate(['/week']);
   }
 }

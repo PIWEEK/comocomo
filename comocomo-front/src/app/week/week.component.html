@@ -1,5 +1,20 @@
-<nav-bar-component [content]="'10-16 dic 2018'"></nav-bar-component>
-<p>
-  week works!
-</p>
+<nav-bar-component [content]="'17-23 dic 2018'"></nav-bar-component>
+
+<div class="main-container">
+  <a class="day"><span class="day-title">Lunes 17 dic</span><svg><use href="#right-chevron" /></svg></a>
+  <a class="day"><span class="day-title">Martes 18 dic</span><svg><use href="#right-chevron" /></svg></a>
+  <a class="day open"><span class="day-title">Miércoles 19 dic</span><svg><use href="#right-chevron" /></svg></a>
+  <ul class="day-slots">
+    <li><a (click)="slotClick(0)">Desayuno</a></li>
+    <li><a (click)="slotClick(1)">Media mañana</a></li>
+    <li><a (click)="slotClick(2)">Comida</a></li>
+    <li><a (click)="slotClick(3)">Merienda</a></li>
+    <li><a (click)="slotClick(4)">Cena</a></li>
+  </ul>
+  <a class="day"><span class="day-title">Jueves 20 dic</span><svg><use href="#right-chevron" /></svg></a>
+  <a class="day"><span class="day-title">Viernes 21 dic</span><svg><use href="#right-chevron" /></svg></a>
+  <a class="day"><span class="day-title">Sábado 22 dic</span><svg><use href="#right-chevron" /></svg></a>
+  <a class="day"><span class="day-title">Domingo 23 dic</span><svg><use href="#right-chevron" /></svg></a>
+</div>
+
 <menu-bar-component [currentSection]="'week'"></menu-bar-component>

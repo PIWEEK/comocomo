@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-week',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeekComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  public slotClick(slotNumber: number) {
+    this.router.navigate(['/day', slotNumber]);
   }
 
 }

@@ -1,0 +1,53 @@
+.main-container {
+  padding: 0 2rem;
+
+  .day {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    font-size: 120%;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+
+    .day-title {
+      flex: 1 1 auto;
+    }
+
+    svg {
+      fill: #000000;
+      flex: 0 0 auto;
+      height: 1rem;
+      margin-right: 1rem;
+      width: 1rem;
+    }
+  }
+
+  .day.open {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .day:not(.open):not(:last-child) {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .day-slots {
+    background-color: #f5f5f5;
+    padding: 0 1rem;
+
+    li {
+      list-style-type: none;
+
+      a {
+        cursor: pointer;
+        display: block;
+        padding: 1.5rem;
+      }
+    }
+
+    li:not(:last-child) {
+      border-bottom: 1px solid #bdbdbd;
+    }
+  }
+}
