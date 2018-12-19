@@ -18,11 +18,11 @@
       <svg><use href="#right-chevron" /></svg>
     </a>
     <ul *ngIf="dayIndex === currentDayIndex" class="day-slots">
-      <li><a (click)="slotClick(0)">Desayuno</a></li>
-      <li><a (click)="slotClick(1)">Media mañana</a></li>
-      <li><a (click)="slotClick(2)">Comida</a></li>
-      <li><a (click)="slotClick(3)">Merienda</a></li>
-      <li><a (click)="slotClick(4)">Cena</a></li>
+      <li *ngFor="let slotName of daySlots; let slotIndex = index">
+        <a [routerLink]="['/day', weekDayLink(dayIndex), slotIndex]">
+          {{ slotName }}
+        </a>
+      </li>
     </ul>
   </ng-container>
 </div>

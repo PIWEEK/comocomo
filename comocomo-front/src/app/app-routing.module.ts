@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'week', component: WeekComponent},
   { path: 'day', component: DayComponent},
-  { path: 'day/:slot', component: GatheringComponent},
+  { path: 'day/:date/:slot', component: GatheringComponent},
   { path: 'barns', component: BarnsComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];

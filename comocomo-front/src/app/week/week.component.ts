@@ -28,7 +28,6 @@ export class WeekComponent implements OnInit {
           this.currentWeek = this.dates.currentWeek();
         } else {
           this.currentWeek = this.dates.fromLink(weekParam);
-          console.log('dddd', this.currentWeek);
         }
 
         const openParam = params.get('open');
@@ -82,16 +81,33 @@ export class WeekComponent implements OnInit {
     return this.dates.weekDays();
   }
 
+  get daySlots() {
+    // TODO: esto debería venir de un servicio del API de back
+    return [
+      'Desayuno',
+      'Media mañana',
+      'Comida',
+      'Merienda',
+      'Cena'
+    ];
+  }
+
   public weekDayName(dayIndex: number) {
     if (this.currentWeek) {
-      return this.dates.weekDayName(this.currentWeek, dayIndex);
+      const weekDay = this.dates.weekDay(this.currentWeek, dayIndex);
+      return this.dates.dayName(weekDay);
     } else {
-      return 0;
+      return '';
     }
   }
 
-  public slotClick(slotNumber: number) {
-    this.router.navigate(['/day', slotNumber]);
+  public weekDayLink(dayIndex: number) {
+    if (this.currentWeek) {
+      const weekDay = this.dates.weekDay(this.currentWeek, dayIndex);
+      return this.dates.toLink(weekDay);
+    } else {
+      return '';
+    }
   }
 
 }

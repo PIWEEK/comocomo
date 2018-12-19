@@ -52,6 +52,14 @@ export class DatesService {
     return `${startDay}-${endDay} ${endMonth} ${endYear}`;
   }
 
+  public dayName(date: Moment): string {
+    return date.format('dddd D MMM').replace('.', '');
+  }
+
+  public dayNameShort(date: Moment): string {
+    return date.format('dddd D');
+  }
+
   public weekDays(): number[] {
     return Array.from(Array(7).keys());
   }
@@ -60,8 +68,7 @@ export class DatesService {
     return moment().weekday();
   }
 
-  public weekDayName(week: Moment, dayIndex: number) {
-    const weekDay = week.clone().add(dayIndex, 'days');
-    return weekDay.format('dddd D MMM').replace('.', '');
+  public weekDay(week: Moment, dayIndex: number) {
+    return week.clone().add(dayIndex, 'days');
   }
 }
