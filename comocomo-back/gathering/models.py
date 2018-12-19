@@ -29,6 +29,9 @@ class FoodKind(models.Model):
     def __unicode__(self):
         return self.name
 
+    def __str__(self):
+        return u'{}'.format(self.name)
+
     @property
     def icon_path(self):
         return staticfiles_storage.url(os.path.join(self.ICONS_PATH, self.icon_name))
