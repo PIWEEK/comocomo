@@ -5,6 +5,7 @@ import { CommonApiService } from '../common/common-api.service';
 import { throwError } from 'rxjs';
 import { DatesService } from '../../shared/dates-service/dates.service';
 import { HttpHeaders } from '@angular/common/http';
+import { WeekStatistics } from './week-statistics.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,6 @@ export class WeekStatisticsApiService {
       })
     }
 
-    return this.http.get(url, httpOptions);
+    return this.http.get<WeekStatistics>(url, httpOptions);
   }
 }

@@ -1,7 +1,8 @@
-import { zip } from 'rxjs';
-import { tap, share, filter, reduce, map } from 'rxjs/operators';
+import { Observable, zip } from 'rxjs';
+import { share, filter, reduce, map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { WeekStatisticsApiService } from '../data-model/week-statistics/week-statistics-api.service';
+import { WeekStatistics } from '../data-model/week-statistics/week-statistics.model';
 
 @Component({
   selector: 'app-barns',
@@ -9,14 +10,14 @@ import { WeekStatisticsApiService } from '../data-model/week-statistics/week-sta
   styleUrls: ['./barns.component.less']
 })
 export class BarnsComponent implements OnInit {
-  public weekStatistics$: any;
+  public weekStatistics$: Observable<WeekStatistics>;
 
-  public categoryA$: any;
-  public categoryB$: any;
-  public categoryC$: any;
-  public categoryD$: any;
-  public categoryE$: any;
-  public single$: any;
+  public categoryA$: Observable<number>;
+  public categoryB$: Observable<number>;
+  public categoryC$: Observable<number>;
+  public categoryD$: Observable<number>;
+  public categoryE$: Observable<number>;
+  public single$: Observable<Object>;
 
   public multi: any[];
   public view: any[] = [700, 400];
@@ -76,8 +77,7 @@ export class BarnsComponent implements OnInit {
         {'name': 'C', 'value': c},
         {'name': 'D', 'value': d},
         {'name': 'E', 'value': e}
-      ]),
-      tap((value) => console.log('sdfs', value))
+      ])
     )
 
     this.weekStatistics$.subscribe();
