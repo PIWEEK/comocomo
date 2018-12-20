@@ -24,6 +24,10 @@ export class DatesService {
     return moment().clone().startOf('week');
   }
 
+  public today(): Moment {
+    return moment();
+  }
+
   public previousWeek(date: Moment): Moment {
     return date.clone().subtract(1, 'week');
   }
