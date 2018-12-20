@@ -141,3 +141,10 @@ class FoodRegistration(models.Model):
             self.slot_name(),
         )
 
+    def to_dict(self):
+        return {
+            'date': self.date,
+            'slot': self.slot,
+            'eaten': [food_type.to_dict() for food_type in self.eaten.all()],
+        }
+
