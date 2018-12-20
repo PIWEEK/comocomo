@@ -3,13 +3,13 @@ from .models import *
 
 
 class FoodKindAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('id', 'name', 'icon_name')
 
 admin.site.register(FoodKind, FoodKindAdmin)
 
 
 class FoodTypeAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'kind', 'nutriscore')
+    list_display = ('name', 'kind', 'nutriscore')
 
 admin.site.register(FoodType, FoodTypeAdmin)
 
