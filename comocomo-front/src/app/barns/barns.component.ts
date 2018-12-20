@@ -20,7 +20,7 @@ export class BarnsComponent implements OnInit {
   public single$: Observable<Object>;
 
   public multi: any[];
-  public view: any[] = [700, 400];
+  public view: any[] = [300, 200];
 
   // options
   public showXAxis = true;

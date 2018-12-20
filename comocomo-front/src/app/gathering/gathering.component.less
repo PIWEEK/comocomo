@@ -5,12 +5,12 @@
     font-size: 100%;
   }
 
-  .food-groups {
+  .food-kinds {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 1rem;
+    margin: 1rem 0;
 
-    .food-group {
+    .food-kind {
       align-items: center;
       background-color: transparent;
       border: 0;
@@ -28,16 +28,20 @@
       }
     }
 
-    .food-group:hover {
+    .food-kind:hover {
       background-color: #f5f5f5;
+    }
+
+    .food-kind.selected {
+      background-color: #b9e8ee;
     }
   }
 }
 
 @media only screen and (min-width: 35em) {
   .main-container {
-    .food-groups {
-      .food-group {
+    .food-kinds {
+      .food-kind {
         flex-basis: 16%;
       }
     }

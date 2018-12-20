@@ -6,11 +6,12 @@
 
 <div class="main-container">
   <div class="gathering-title">¿Qué has {{ slotName }} el {{ dayNameShort }}?</div>
-  <div class="food-groups">
+  <div class="food-kinds">
     <button
-      class="food-group"
       *ngFor="let foodKind of (foodKinds$ | async)"
-      (click)="groupClicked(foodKind)">
+      class="food-kind"
+      [class.selected]="isKindSelected(foodKind)"
+      (click)="kindClicked(foodKind)">
       <img src="http://localhost:8000{{ foodKind.icon_path }}" />
       {{ foodKind.name }}
     </button>
@@ -18,6 +19,7 @@
   <food-type
     *ngFor="let foodKind of selectedKinds"
     [foodKind]="foodKind"
+    (changed)="typeChanged(foodKind, $event)"
     ></food-type>
 
 </div>

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import JsonResponse
+from django.contrib.auth.models import User
 from rest_framework import viewsets
 from .models import FoodKind, FoodType, FoodRegistration
 from .serializers import FoodKindSerializer, FoodTypeSerializer
@@ -39,12 +40,21 @@ class FoodRegistrationView(View):
 
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
-        registration = FoodRegistration.objects.create(
-            user = request.user,
-            date = data['date'],
-            slot = data['slot'],
-        )
-        for type_id in data['eaten']:
-            food_type = FoodType.objects.get(id=type_id)
-            registration.eaten.add(food_type)
+        # user = request.user
+        user = User.objects.get(username='admin')
+
+        FoodRegistration.objects.filter(
+            user=user, date=data['date'], slot=data['slot']
+        ).delete()
+
+        if len(data['eaten']) > 0:
+            registration = FoodRegistration.objects.create(
+                user = user,
+                date = data['date'],
+                slot = data['slot'],
+            )
+            for food_type_data in data['eaten']:
+                food_type = FoodType.objects.get(id=food_type_data['id'])
+                registration.eaten.add(food_type)
+
         return JsonResponse({})

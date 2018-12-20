@@ -25,13 +25,15 @@ export class GatheringComponent implements OnInit {
   public returnParams: Object;
 
   public selectedKinds: FoodKind[];
+  public selectedTypes: FoodType[];
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private dates: DatesService,
     private foodKindsApiService: FoodKindsApiService,
-    private foodTypesApiService: FoodTypesApiService
+    private foodTypesApiService: FoodTypesApiService,
+    private foodRegistrationsApiService: FoodRegistrationsApiService
   ) { }
 
   ngOnInit() {
@@ -59,6 +61,7 @@ export class GatheringComponent implements OnInit {
     this.foodKinds$.subscribe();
 
     this.selectedKinds = [];
+    this.selectedTypes = [];
   }
 
   get slotName() {
@@ -81,7 +84,37 @@ export class GatheringComponent implements OnInit {
     }
   }
 
-  public groupClicked(foodKind: FoodKind) {
-    this.selectedKinds.push(foodKind);
+  public isKindSelected(foodKind: FoodKind) {
+    return !!this.selectedKinds.find((it) => it.id === foodKind.id);
+  }
+
+  public kindClicked(foodKind: FoodKind) {
+    if (this.isKindSelected(foodKind)) {
+      this.selectedKinds = this.selectedKinds.filter(
+        (it) => it.id !== foodKind.id
+      );
+      this.selectedTypes = this.selectedTypes.filter(
+        (it) => it.kind !== foodKind.id
+      );
+      this.registerFood();
+    } else {
+      this.selectedKinds.push(foodKind);
+    }
+  }
+
+  public typeChanged(foodKind: FoodKind, foodType: FoodType) {
+    this.selectedTypes = this.selectedTypes.filter(
+      (it) => it.kind !== foodKind.id
+    );
+    this.selectedTypes.push(foodType);
+    this.registerFood();
+  }
+
+  private registerFood() {
+    this.foodRegistrationsApiService.registerFood({
+      date: this.dates.toLink(this.currentDate),
+      slot: this.currentSlot,
+      eaten: this.selectedTypes,
+    }).subscribe();
   }
 }

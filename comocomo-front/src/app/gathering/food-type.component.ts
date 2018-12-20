@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { withLatestFrom } from 'rxjs/operators';
 import { FoodKind } from '../data-model/food-kinds/food-kinds.model';
 import { FoodTypesApiService } from '../data-model/food-types/food-types-api.service';
 import { FoodType } from '../data-model/food-types/food-types.model';
@@ -12,7 +13,10 @@ import { FoodType } from '../data-model/food-types/food-types.model';
 export class FoodTypeComponent implements OnInit {
 
   @Input() foodKind: FoodKind;
+  @Output() public changed: EventEmitter<FoodType> = new EventEmitter();
+
   public foodTypes$: Observable<FoodType[]>;
+  private inputChanged$ = new Subject<string>();
 
   constructor(
     private foodTypesApiService: FoodTypesApiService
@@ -20,5 +24,18 @@ export class FoodTypeComponent implements OnInit {
 
   ngOnInit() {
     this.foodTypes$ = this.foodTypesApiService.getFoodTypes(this.foodKind.id);
+
+    this.inputChanged$
+      .pipe(withLatestFrom(this.foodTypes$))
+      .subscribe(([value, foodTypes]) => {
+        const foodType = foodTypes.find((it) => it.name === value);
+        if (foodType) {
+          this.changed.emit(foodType);
+        }
+      });
+  }
+
+  public inputChanged(evt: any) {
+    this.inputChanged$.next(evt.target.value);
   }
 }

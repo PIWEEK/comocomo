@@ -1,5 +1,9 @@
-<input type="text" list="foodTypes" [placeholder]="'Selecciona el tipo de ' + foodKind.name">
-<datalist id="foodTypes">
+<input
+  type="text"
+  [attr.list]="'foodTypes-' + foodKind.id"
+  [placeholder]="'Selecciona el tipo de ' + foodKind.name"
+  (input)='inputChanged($event)'>
+<datalist [attr.id]="'foodTypes-' + foodKind.id">
   <option *ngFor="let foodType of (foodTypes$ | async)">
     {{foodType.name}}
   </option>

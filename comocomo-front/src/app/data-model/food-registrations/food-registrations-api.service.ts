@@ -22,6 +22,13 @@ export class FoodRegistrationsApiService {
     );
   }
 
+  public registerFood(food: FoodRegistration) {
+    const url = this.apiService.getApiUrl('/food-registrations');
+    return this.http.post<{}>(url, food).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     let userMessage = 'Something bad happened; please try again later.';
 
