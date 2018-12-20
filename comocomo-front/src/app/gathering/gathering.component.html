@@ -9,10 +9,17 @@
   <div class="food-groups">
     <button
       class="food-group"
-      *ngFor="let food of (foodKinds$ | async)">
-      <img src="http://localhost:8000{{ food.icon_path }}" />{{ food.name }}
+      *ngFor="let foodKind of (foodKinds$ | async)"
+      (click)="groupClicked(foodKind)">
+      <img src="http://localhost:8000{{ foodKind.icon_path }}" />
+      {{ foodKind.name }}
     </button>
   </div>
+  <food-type
+    *ngFor="let foodKind of selectedKinds"
+    [foodKind]="foodKind"
+    ></food-type>
+
 </div>
 
 <menu-bar [currentSection]="'day'"></menu-bar>

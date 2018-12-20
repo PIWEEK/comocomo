@@ -3,21 +3,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { CommonApiService } from '../common/common-api.service';
 import { throwError } from 'rxjs';
-import { FoodKind } from './food-kinds.model';
+import { FoodRegistration } from './food-registrations.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FoodKindsApiService {
+export class FoodRegistrationsApiService {
 
   constructor(
     private http: HttpClient,
     private apiService: CommonApiService
     ) { }
 
-  public getFoodKinds() {
-    const url = this.apiService.getApiUrl('/food-kinds');
-    return this.http.get<FoodKind>(url).pipe(
+  public getFoodRegistrations() {
+    const url = this.apiService.getApiUrl('/food-registrations');
+    return this.http.get<FoodRegistration>(url).pipe(
       catchError(this.handleError)
     );
   }

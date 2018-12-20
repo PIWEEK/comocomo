@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { DatesService } from '../shared/dates-service/dates.service';
 import { Moment } from 'moment';
 import { FoodKindsApiService } from '../data-model/food-kinds/food-kinds-api.service';
+import { FoodKind } from '../data-model/food-kinds/food-kinds.model';
+import { FoodTypesApiService } from '../data-model/food-types/food-types-api.service';
+import { FoodType } from '../data-model/food-types/food-types.model';
+import { FoodRegistrationsApiService } from '../data-model/food-registrations/food-registrations-api.service';
+import { FoodRegistration } from '../data-model/food-registrations/food-registrations.model';
 
 @Component({
   selector: 'app-gathering',
@@ -11,18 +17,21 @@ import { FoodKindsApiService } from '../data-model/food-kinds/food-kinds-api.ser
 })
 export class GatheringComponent implements OnInit {
   public errorMessage = '';
-  public foodKinds$: any;
+  public foodKinds$: Observable<FoodKind>;
 
   public currentDate: Moment;
   public currentSlot: number;
 
   public returnParams: Object;
 
+  public selectedKinds: FoodKind[];
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private dates: DatesService,
-    private foodKindsApiService: FoodKindsApiService
+    private foodKindsApiService: FoodKindsApiService,
+    private foodTypesApiService: FoodTypesApiService
   ) { }
 
   ngOnInit() {
@@ -48,6 +57,8 @@ export class GatheringComponent implements OnInit {
 
     this.foodKinds$ = this.foodKindsApiService.getFoodKinds();
     this.foodKinds$.subscribe();
+
+    this.selectedKinds = [];
   }
 
   get slotName() {
@@ -68,5 +79,9 @@ export class GatheringComponent implements OnInit {
     } else {
       return '';
     }
+  }
+
+  public groupClicked(foodKind: FoodKind) {
+    this.selectedKinds.push(foodKind);
   }
 }
