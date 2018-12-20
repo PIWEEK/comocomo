@@ -3,7 +3,7 @@ from django.views import View
 from django.http import JsonResponse
 from rest_framework import viewsets
 from .models import FoodKind, FoodType, FoodRegistration
-from .serializers import FoodKindSerializer
+from .serializers import FoodKindSerializer, FoodTypeSerializer
 
 import json
 
@@ -14,6 +14,17 @@ class FoodKindViewSet(viewsets.ModelViewSet):
     """
     queryset = FoodKind.objects.all()
     serializer_class = FoodKindSerializer
+
+
+class FoodTypeViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows foodkinds to be viewed
+    """
+    serializer_class = FoodTypeSerializer
+
+    def get_queryset(self):
+        kind_id = self.kwargs['kind_id']
+        return FoodType.objects.filter(kind_id=kind_id)
 
 
 class FoodRegistrationView(View):

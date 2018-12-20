@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('rest_auth.urls')),
     path('api/v1/food-kinds/', gathering_views.FoodKindViewSet.as_view({'get': 'list'}), name='food-kinds'),
+    path('api/v1/food-kinds/<kind_id>/food-types/', gathering_views.FoodTypeViewSet.as_view({'get': 'list'}), name='food-types'),
     path('api/v1/food-registrations/', gathering_views.FoodRegistrationView.as_view(), name='food-registrations'),
-    path('api/v1/week-statistics/<from_date>/<to_date>', barns_views.WeekStatisticsView.as_view(), name='week-statistics'),
+    path('api/v1/week-statistics/<from_date>/<to_date>/', barns_views.WeekStatisticsView.as_view(), name='week-statistics'),
 ]
