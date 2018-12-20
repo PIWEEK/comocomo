@@ -14,11 +14,11 @@ class FoodTypeAdmin(admin.ModelAdmin):
 admin.site.register(FoodType, FoodTypeAdmin)
 
 
-class DaySlotAdmin(admin.ModelAdmin):
+class FoodRegistrationAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'
     list_display = ('user', 'date', 'slot',)
     list_filter = ('slot',)
     filter_horizontal = ('eaten',)
 
-admin.site.register(DaySlot, DaySlotAdmin)
+admin.site.register(FoodRegistration, FoodRegistrationAdmin)
 

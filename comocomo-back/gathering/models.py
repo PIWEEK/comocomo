@@ -92,7 +92,7 @@ class SlotType:
         return values_list
 
 
-class DaySlot(models.Model):
+class FoodRegistration(models.Model):
 
     SLOT_CHOICES = (
         (SlotType.BREAKFAST, _('Desayuno')),
