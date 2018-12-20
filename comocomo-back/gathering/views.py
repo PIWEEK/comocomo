@@ -33,7 +33,8 @@ class FoodRegistrationView(View):
     """
 
     def get(self, request, *args, **kwargs):
-        registrations = FoodRegistration.objects.filter(user=request.user)
+        # registrations = FoodRegistration.objects.filter(user=request.user)
+        registrations = FoodRegistration.objects.all()
         return JsonResponse([registration.to_dict() for registration in registrations], safe=False)
 
     def post(self, request, *args, **kwargs):
@@ -47,4 +48,3 @@ class FoodRegistrationView(View):
             food_type = FoodType.objects.get(id=type_id)
             registration.eaten.add(food_type)
         return JsonResponse({})
-

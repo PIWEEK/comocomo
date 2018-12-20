@@ -9,6 +9,7 @@ class WeekStatisticsView(View):
         from_date = kwargs['from_date']
         to_date = kwargs['to_date']
 
-        types = FoodType.objects.filter(foodregistration__user=request.user, foodregistration__date__range=(from_date, to_date))
+        # types = FoodType.objects.filter(foodregistration__user=request.user, foodregistration__date__range=(from_date, to_date))
+        types = FoodType.objects.filter(foodregistration__date__range=(from_date, to_date))
 
         return JsonResponse([type.to_dict() for type in types], safe=False)
