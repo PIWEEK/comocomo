@@ -1,4 +1,4 @@
-from .models import FoodKind
+from .models import *
 from rest_framework import serializers
 
 

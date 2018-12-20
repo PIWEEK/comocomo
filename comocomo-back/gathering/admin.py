@@ -1,4 +1,24 @@
 from django.contrib import admin
-from .models import FoodKind
+from .models import *
 
-admin.site.register(FoodKind)
+
+class FoodKindAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(FoodKind, FoodKindAdmin)
+
+
+class FoodTypeAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'kind', 'nutriscore')
+
+admin.site.register(FoodType, FoodTypeAdmin)
+
+
+class DaySlotAdmin(admin.ModelAdmin):
+    date_hierarchy = 'date'
+    list_display = ('user', 'date', 'slot',)
+    list_filter = ('slot',)
+    filter_horizontal = ('eaten',)
+
+admin.site.register(DaySlot, DaySlotAdmin)
+
