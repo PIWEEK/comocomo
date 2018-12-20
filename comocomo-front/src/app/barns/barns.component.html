@@ -6,13 +6,22 @@
 
 <div class="main-container">
   <div class="barn-title">Tu media semanal es:</div>
-  <ul>
-      <li
-      class="food-group"
-      *ngFor="let food of (weekStatistics$ | async)">
-        {{ food.name }}
-      </li>
-  </ul>
+  <div class="chart">
+    <ngx-charts-bar-vertical
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="single$ | async"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      (select)="onSelect($event)">
+    </ngx-charts-bar-vertical>
+  </div>
 </div>
 
 <menu-bar [currentSection]="'barns'"></menu-bar>

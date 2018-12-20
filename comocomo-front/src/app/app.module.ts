@@ -13,6 +13,8 @@ import { BarnsComponent } from './barns/barns.component';
 import { GatheringComponent } from './gathering/gathering.component';
 import { MenuBarComponent } from './shared/menu-bar-component/menu-bar.component';
 import { NavBarComponent } from './shared/nav-bar-component/nav-bar.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { NavBarComponent } from './shared/nav-bar-component/nav-bar.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
