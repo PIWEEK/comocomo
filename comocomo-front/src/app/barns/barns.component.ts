@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./barns.component.less']
 })
 export class BarnsComponent implements OnInit {
+  public weekStatistics$: any;
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit() {
   }

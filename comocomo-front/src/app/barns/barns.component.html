@@ -1,4 +1,11 @@
-<p>
-  barns works!
-</p>
+<nav-bar
+  [content]="'Estadísticas'"
+  [leftRouterLink]="['/barns']"
+  [leftQueryParams]="returnParams"
+  ></nav-bar>
+
+<div class="main-container">
+  <div class="barn-title">Tu media semanal es:</div>
+</div>
+
 <menu-bar [currentSection]="'barns'"></menu-bar>
