@@ -31,7 +31,13 @@ export class BarnsComponent implements OnInit {
   public showYAxisLabel = true;
   public yAxisLabel = 'Numero de comidas';
   public colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    domain: [
+      '#2e8141',
+      '#85bb2f',
+      '#f8cb06',
+      '#ee8101',
+      '#e63e10'
+    ]
   };
 
   constructor(
