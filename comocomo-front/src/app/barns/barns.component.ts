@@ -82,15 +82,21 @@ export class BarnsComponent implements OnInit {
   }
 
   public onSelect(event){
-    this.showScoreDetail = true;
-    this.scoreDetailLetter = event.name
+    if (this.showScoreDetail && this.scoreDetailLetter === event.name) {
+      this.showScoreDetail = null;
+      this.scoreDetailLetter = null;
+      this.scoreDetailedList$ = null;
+    } else {
+      this.showScoreDetail = true;
+      this.scoreDetailLetter = event.name;
 
-    const filterByScore = (score) => {
-      return (foodTypes) => foodTypes.filter((food) => food.nutriscore === score)
+      const filterByScore = (score) => {
+        return (foodTypes) => foodTypes.filter((food) => food.nutriscore === score)
+      }
+
+      this.scoreDetailedList$ = this
+        .weekStatistics$
+        .pipe(map(filterByScore(event.name)))
     }
-
-    this.scoreDetailedList$ = this
-      .weekStatistics$
-      .pipe(map(filterByScore(event.name)))
   }
 }
