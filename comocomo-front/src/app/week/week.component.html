@@ -22,6 +22,9 @@
         <a [routerLink]="['/gathering', weekDayLink(dayIndex), slotIndex]" [queryParams]="savedParams">
           {{ slotName }}
         </a>
+        <div class="registered" *ngIf="hasSlotRegistrations(slotIndex)">
+          <svg><use href="#checked" /></svg>
+        </div>
       </li>
     </ul>
   </ng-container>

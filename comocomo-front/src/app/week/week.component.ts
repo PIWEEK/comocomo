@@ -1,7 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DatesService } from '../shared/dates-service/dates.service';
 import { Moment } from 'moment';
+import { DatesService } from '../shared/dates-service/dates.service';
+import { FoodRegistrationsApiService } from '../data-model/food-registrations/food-registrations-api.service';
+import { FoodRegistration } from '../data-model/food-registrations/food-registrations.model';
 
 @Component({
   selector: 'app-week',
@@ -16,10 +18,14 @@ export class WeekComponent implements OnInit {
   public isToday: boolean;
   public savedParams = {};
 
+  public registrations: FoodRegistration[] = [];
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private dates: DatesService
+    private cd: ChangeDetectorRef,
+    private dates: DatesService,
+    private foodRegistrationsApiService: FoodRegistrationsApiService
   ) { }
 
   ngOnInit() {
@@ -45,6 +51,19 @@ export class WeekComponent implements OnInit {
         }
 
         this.savedParams = {week: weekParam, open: openParam};
+
+        if (this.currentDayIndex) {
+          this.foodRegistrationsApiService.getFoodRegistrations(
+            this.dates.weekDay(this.currentWeek, this.currentDayIndex),
+            this.dates.weekDay(this.currentWeek, this.currentDayIndex)
+          ).subscribe(
+            (registrations) => {
+              console.log(registrations);
+              this.registrations = registrations;
+              this.cd.markForCheck();
+            }
+          )
+        }
       }
     );
   }
@@ -114,6 +133,10 @@ export class WeekComponent implements OnInit {
     } else {
       return '';
     }
+  }
+
+  public hasSlotRegistrations(slot: number) {
+    return (!!this.registrations.find((it) => it.slot === slot));
   }
 
 }
