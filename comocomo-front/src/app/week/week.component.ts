@@ -58,7 +58,6 @@ export class WeekComponent implements OnInit {
             this.dates.weekDay(this.currentWeek, this.currentDayIndex)
           ).subscribe(
             (registrations) => {
-              console.log(registrations);
               this.registrations = registrations;
               this.cd.markForCheck();
             }
