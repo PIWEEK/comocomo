@@ -18,6 +18,8 @@ export class BarnsComponent implements OnInit {
   public categoryD$: Observable<number>;
   public categoryE$: Observable<number>;
   public single$: Observable<Object>;
+  public showScoreDetail: boolean;
+  public scoreDetailLetter: string;
   public scoreDetailedList$: Observable<Object>;
 
   public multi: any[];
@@ -80,6 +82,9 @@ export class BarnsComponent implements OnInit {
   }
 
   public onSelect(event){
+    this.showScoreDetail = true;
+    this.scoreDetailLetter = event.name
+
     const filterByScore = (score) => {
       return (foodTypes) => foodTypes.filter((food) => food.nutriscore === score)
     }

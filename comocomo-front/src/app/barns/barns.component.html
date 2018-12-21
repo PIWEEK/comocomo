@@ -21,11 +21,14 @@
       (select)="onSelect($event)">
     </ngx-charts-bar-vertical>
   </div>
-  <ul class="scoreDetailList">
-    <li *ngFor="let food of scoreDetailedList$ | async">
-      {{ food.name }}
-    </li>
-  </ul>
+  <div class="groupDetail">
+    <h4 *ngIf="showScoreDetail">Grupo: {{ scoreDetailLetter }}</h4>
+    <ul class="scoreDetailList">
+      <li *ngFor="let food of scoreDetailedList$ | async">
+        {{ food.name }}
+      </li>
+    </ul>
+  </div>
   <div class="barns-content">
     <strong>Nutriscore</strong> es un sistema de cinco colores y letras a través de los cuales se indica si un alimento o producto es más o menos saludable.<br><br>
     <div class="nutriscore">
