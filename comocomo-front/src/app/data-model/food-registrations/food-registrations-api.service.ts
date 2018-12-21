@@ -1,9 +1,11 @@
 import { catchError } from 'rxjs/internal/operators';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { CommonApiService } from '../common/common-api.service';
 import { throwError } from 'rxjs';
 import { FoodRegistration } from './food-registrations.model';
+import { DatesService } from '../../shared/dates-service/dates.service';
+import { Moment } from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +14,23 @@ export class FoodRegistrationsApiService {
 
   constructor(
     private http: HttpClient,
-    private apiService: CommonApiService
+    private apiService: CommonApiService,
+    private dates: DatesService
     ) { }
 
-  public getFoodRegistrations() {
+  public getFoodRegistrations(fromDate: Moment = null, toDate: Moment = null, slot: number = null) {
     const url = this.apiService.getApiUrl('/food-registrations');
-    return this.http.get<FoodRegistration>(url).pipe(
+    let params = new HttpParams();
+    if (fromDate != null) {
+      params = params.append('from', this.dates.toLink(fromDate));
+    }
+    if (toDate != null) {
+      params = params.append('to', this.dates.toLink(toDate));
+    }
+    if (slot != null) {
+      params = params.append('slot', slot.toString());
+    }
+    return this.http.get<FoodRegistration[]>(url, {params}).pipe(
       catchError(this.handleError)
     );
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { share, zip } from 'rxjs/operators';
 import { DatesService } from '../shared/dates-service/dates.service';
 import { Moment } from 'moment';
 import { FoodKindsApiService } from '../data-model/food-kinds/food-kinds-api.service';
@@ -17,15 +18,15 @@ import { FoodRegistration } from '../data-model/food-registrations/food-registra
 })
 export class GatheringComponent implements OnInit {
   public errorMessage = '';
-  public foodKinds$: Observable<FoodKind>;
+  public foodKinds$: Observable<FoodKind[]>;
 
   public currentDate: Moment;
   public currentSlot: number;
 
   public returnParams: Object;
 
-  public selectedKinds: FoodKind[];
-  public selectedTypes: FoodType[];
+  public selectedKinds: FoodKind[] = [];
+  public selectedTypes: FoodType[] = [];
 
   constructor(
     private router: Router,
@@ -37,14 +38,33 @@ export class GatheringComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(
-      (params) => {
+    this.foodKinds$ = this.foodKindsApiService.getFoodKinds().pipe(share());
+
+    this.route.paramMap.pipe(
+      zip(this.foodKinds$)
+    ).subscribe(
+      ([params, foodKinds]) => {
         const dateParam = params.get('date');
         this.currentDate = this.dates.fromLink(dateParam);
 
         const slotParam = params.get('slot');
         const slot = parseInt(slotParam, 10);
         this.currentSlot = isNaN(slot) ? null : slot;
+
+        this.foodRegistrationsApiService.getFoodRegistrations(
+          this.currentDate,
+          this.currentDate,
+          this.currentSlot
+        ).subscribe(
+          (registrations) => {
+            registrations.forEach((registration) => {
+              this.selectedTypes = registration.eaten;
+              this.selectedKinds = registration.eaten.map(
+                (foodType) => foodKinds.find((it) => it.id == foodType.kind)
+              );
+            });
+          }
+        );
       }
     );
 
@@ -56,12 +76,6 @@ export class GatheringComponent implements OnInit {
         };
       }
     );
-
-    this.foodKinds$ = this.foodKindsApiService.getFoodKinds();
-    this.foodKinds$.subscribe();
-
-    this.selectedKinds = [];
-    this.selectedTypes = [];
   }
 
   get slotName() {
@@ -84,8 +98,20 @@ export class GatheringComponent implements OnInit {
     }
   }
 
+  get isButtonShown() {
+    return (this.selectedKinds.length > 0);
+  }
+
+  get isButtonDisabled() {
+    return (this.selectedKinds.length !== this.selectedTypes.length);
+  }
+
   public isKindSelected(foodKind: FoodKind) {
     return !!this.selectedKinds.find((it) => it.id === foodKind.id);
+  }
+
+  public getSelectedType(foodKind: FoodKind) {
+    return this.selectedTypes.find((it) => it.kind === foodKind.id);
   }
 
   public kindClicked(foodKind: FoodKind) {

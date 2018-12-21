@@ -17,7 +17,7 @@ export class FoodKindsApiService {
 
   public getFoodKinds() {
     const url = this.apiService.getApiUrl('/food-kinds');
-    return this.http.get<FoodKind>(url).pipe(
+    return this.http.get<FoodKind[]>(url).pipe(
       catchError(this.handleError)
     );
   }

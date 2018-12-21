@@ -13,6 +13,7 @@ import { FoodType } from '../data-model/food-types/food-types.model';
 export class FoodTypeComponent implements OnInit {
 
   @Input() foodKind: FoodKind;
+  @Input() foodType: FoodType;
   @Output() public changed: EventEmitter<FoodType> = new EventEmitter();
 
   public foodTypes$: Observable<FoodType[]>;

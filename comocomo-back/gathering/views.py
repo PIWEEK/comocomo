@@ -36,6 +36,15 @@ class FoodRegistrationView(View):
     def get(self, request, *args, **kwargs):
         # registrations = FoodRegistration.objects.filter(user=request.user)
         registrations = FoodRegistration.objects.all()
+        from_date = request.GET.get('from')
+        to_date = request.GET.get('to')
+        slot = request.GET.get('slot')
+        if from_date:
+            registrations = registrations.filter(date__gte=from_date)
+        if to_date:
+            registrations = registrations.filter(date__lte=to_date)
+        if slot:
+            registrations = registrations.filter(slot=slot)
         return JsonResponse([registration.to_dict() for registration in registrations], safe=False)
 
     def post(self, request, *args, **kwargs):

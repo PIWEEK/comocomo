@@ -19,9 +19,16 @@
   <food-type
     *ngFor="let foodKind of selectedKinds"
     [foodKind]="foodKind"
+    [foodType]="getSelectedType(foodKind)"
     (changed)="typeChanged(foodKind, $event)"
     ></food-type>
-
+  <a class="button"
+    *ngIf="isButtonShown"
+    [class.disabled]="isButtonDisabled"
+    [routerLink]="!isButtonDisabled ? ['/gathering'] : null"
+    [queryParams]="!isButtonDisabled ? returnParams : null">
+    Terminado
+  </a>
 </div>
 
 <menu-bar [currentSection]="'day'"></menu-bar>

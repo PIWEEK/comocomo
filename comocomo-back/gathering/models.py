@@ -72,7 +72,7 @@ class FoodType(models.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'kind_id': self.kind.id,
+            'kind': self.kind.id,
             'name': self.name,
             'nutriscore': self.nutriscore,
         }
