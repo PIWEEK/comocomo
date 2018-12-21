@@ -11,7 +11,7 @@
   <ng-container *ngFor="let dayIndex of weekDays">
     <a
       [routerLink]="'/gathering'"
-      [queryParams]="{week: currentWeekLink, open:dayIndex}"
+      [queryParams]="dayIndex === currentDayIndex ? {week: currentWeekLink} : {week: currentWeekLink, open:dayIndex}"
       class="day"
       [class.open]="dayIndex === currentDayIndex">
       <span class="day-title">{{ weekDayName(dayIndex) }}</span>
